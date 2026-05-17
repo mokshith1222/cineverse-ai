@@ -1,0 +1,73 @@
+import { OTTShow, OTTPlatform } from '../types';
+
+export const ottPlatforms: OTTPlatform[] = [
+  { id: 1, name: 'Netflix', logo: 'N', color: '#E50914', shows: [] },
+  { id: 2, name: 'Prime Video', logo: 'P', color: '#00A8E1', shows: [] },
+  { id: 3, name: 'Disney+', logo: 'D+', color: '#113CCF', shows: [] },
+  { id: 4, name: 'Crunchyroll', logo: 'C', color: '#F47521', shows: [] },
+  { id: 5, name: 'HBO Max', logo: 'H', color: '#002BE7', shows: [] },
+  { id: 6, name: 'Apple TV+', logo: '', color: '#555555', shows: [] },
+];
+
+export const defaultWatchlist: OTTShow[] = [
+  {
+    id: 1,
+    title: 'Stranger Things',
+    platform: 'Netflix',
+    poster: 'https://images.pexels.com/photos/5662857/pexels-photo-5662857.jpeg?auto=compress&cs=tinysrgb&w=400',
+    status: 'Watching',
+    progress: 6,
+    totalEpisodes: 9,
+    rating: 8.7,
+    genre: ['Horror', 'Sci-Fi', 'Drama'],
+  },
+  {
+    id: 2,
+    title: 'The Boys',
+    platform: 'Prime Video',
+    poster: 'https://images.pexels.com/photos/7897444/pexels-photo-7897444.jpeg?auto=compress&cs=tinysrgb&w=400',
+    status: 'Completed',
+    progress: 8,
+    totalEpisodes: 8,
+    rating: 8.7,
+    genre: ['Action', 'Comedy', 'Crime'],
+  },
+  {
+    id: 3,
+    title: 'Loki',
+    platform: 'Disney+',
+    poster: 'https://images.pexels.com/photos/3045565/pexels-photo-3045565.jpeg?auto=compress&cs=tinysrgb&w=400',
+    status: 'Watching',
+    progress: 4,
+    totalEpisodes: 6,
+    rating: 8.2,
+    genre: ['Action', 'Adventure', 'Fantasy'],
+  },
+  {
+    id: 4,
+    title: 'Attack on Titan',
+    platform: 'Crunchyroll',
+    poster: 'https://images.pexels.com/photos/1051747/pexels-photo-1051747.jpeg?auto=compress&cs=tinysrgb&w=400',
+    status: 'Completed',
+    progress: 94,
+    totalEpisodes: 94,
+    rating: 9.1,
+    genre: ['Action', 'Dark Fantasy'],
+  },
+  {
+    id: 5,
+    title: 'House of the Dragon',
+    platform: 'HBO Max',
+    poster: 'https://images.pexels.com/photos/8474374/pexels-photo-8474374.jpeg?auto=compress&cs=tinysrgb&w=400',
+    status: 'Plan to Watch',
+    genre: ['Action', 'Drama', 'Fantasy'],
+  },
+  {
+    id: 6,
+    title: 'Severance',
+    platform: 'Apple TV+',
+    poster: 'https://images.pexels.com/photos/3075993/pexels-photo-3075993.jpeg?auto=compress&cs=tinysrgb&w=400',
+    status: 'Plan to Watch',
+    genre: ['Drama', 'Sci-Fi', 'Mystery'],
+  },
+];

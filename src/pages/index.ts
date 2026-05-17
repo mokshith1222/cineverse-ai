@@ -1,0 +1,22 @@
+export { default as Home } from './Home';
+export { default as Movies } from './Movies';
+export { default as MovieDetail } from './MovieDetail';
+export { default as Anime } from './Anime';
+export { default as AnimeDetail } from './AnimeDetail';
+export { default as Tv } from './Tv';
+export { default as TvDetail } from './TvDetail';
+export { default as TvEpisodes } from './TvEpisodes';
+export { default as Trailers } from './Trailers';
+export { default as OTTTracker } from './OTTTracker';
+export { default as Login } from './Login';
+export { default as Signup } from './Signup';
+export { default as Watchlist } from './Watchlist';
+export { default as ReleaseCalendar } from './ReleaseCalendar';
+export { default as Notifications } from './Notifications';
+export { default as SearchResults } from './SearchResults';
+
+export { default as About } from './About';
+export { default as Contact } from './Contact';
+export { default as Privacy } from './Privacy';
+export { default as Terms } from './Terms';
+export { default as Disclaimer } from './Disclaimer';

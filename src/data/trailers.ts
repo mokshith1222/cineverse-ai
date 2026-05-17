@@ -1,0 +1,58 @@
+import { Trailer } from '../types';
+
+export const featuredTrailers: Trailer[] = [
+  {
+    id: 1,
+    title: 'Dune: Part Two - Official Trailer',
+    thumbnail: 'https://images.pexels.com/photos/7234213/pexels-photo-7234213.jpeg?auto=compress&cs=tinysrgb&w=800',
+    youtubeId: 'n9xhJrPXop4',
+    type: 'Movie',
+    releaseDate: '2024-03-01',
+    views: '28M',
+  },
+  {
+    id: 2,
+    title: 'Attack on Titan Final Season - Trailer',
+    thumbnail: 'https://images.pexels.com/photos/1051747/pexels-photo-1051747.jpeg?auto=compress&cs=tinysrgb&w=800',
+    youtubeId: 'LHtdKWJdif4',
+    type: 'Anime',
+    releaseDate: '2023-10-03',
+    views: '15M',
+  },
+  {
+    id: 3,
+    title: 'Oppenheimer - Official Trailer',
+    thumbnail: 'https://images.pexels.com/photos/10518901/pexels-photo-10518901.jpeg?auto=compress&cs=tinysrgb&w=800',
+    youtubeId: 'bK6ldnjE3Y0',
+    type: 'Movie',
+    releaseDate: '2023-07-21',
+    views: '22M',
+  },
+  {
+    id: 4,
+    title: 'Jujutsu Kaisen Season 2 - Trailer',
+    thumbnail: 'https://images.pexels.com/photos/9072392/pexels-photo-9072392.jpeg?auto=compress&cs=tinysrgb&w=800',
+    youtubeId: 'pkKu9hLT-t8',
+    type: 'Anime',
+    releaseDate: '2023-07-06',
+    views: '18M',
+  },
+  {
+    id: 5,
+    title: 'Alien: Romulus - Official Trailer',
+    thumbnail: 'https://images.pexels.com/photos/4571943/pexels-photo-4571943.jpeg?auto=compress&cs=tinysrgb&w=800',
+    youtubeId: 'mBjsgSCgAj0',
+    type: 'Movie',
+    releaseDate: '2024-08-16',
+    views: '12M',
+  },
+  {
+    id: 6,
+    title: 'Chainsaw Man - Official Trailer',
+    thumbnail: 'https://images.pexels.com/photos/5797908/pexels-photo-5797908.jpeg?auto=compress&cs=tinysrgb&w=800',
+    youtubeId: 'dVAFmBkFNps',
+    type: 'Anime',
+    releaseDate: '2022-10-11',
+    views: '20M',
+  },
+];
