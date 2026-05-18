@@ -258,7 +258,7 @@ export default function ReleaseCalendar() {
               return (
                 <div key={item.id} className="group rounded-xl border border-white/5 bg-gray-900/45 hover:bg-gray-900/70 hover:border-cyan-400/20 transition-all overflow-hidden">
                   <div className="flex gap-4 p-4">
-                    <img src={item.poster} alt="" className="w-20 h-28 object-cover rounded-lg bg-gray-800 shrink-0" />
+                    <img src={item.poster} alt={`${item.title} poster`} loading="lazy" className="w-20 h-28 object-cover rounded-lg bg-gray-800 shrink-0" />
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="rounded-md bg-cyan-400/10 border border-cyan-400/20 px-2 py-0.5 text-[10px] font-black uppercase text-cyan-300">{item.kind}</span>

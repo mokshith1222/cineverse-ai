@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Bell, CalendarDays, Film, Languages, Play, BookMarked, TrendingUp, Search, Menu, X, Zap, MonitorPlay, LogIn, LogOut, User as UserIcon, Bookmark } from 'lucide-react';
+import { Bell, CalendarDays, Film, Languages, Play, BookMarked, TrendingUp, Search, Menu, X, Zap, MonitorPlay, LogIn, LogOut, User as UserIcon, Bookmark, Star } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { languageOptions, useLanguage } from '../contexts/LanguageContext';
 import VoiceSearchButton from './VoiceSearchButton';
@@ -18,6 +18,8 @@ const navLinks = [
   { to: '/anime', labelKey: 'anime', icon: Zap },
   { to: '/tv', labelKey: 'tv', icon: MonitorPlay },
   { to: '/trailers', labelKey: 'trailers', icon: Play },
+  { to: '/editorial-picks', labelKey: 'editorial', icon: Star },
+  { to: '/weekly-picks', labelKey: 'weekly', icon: Star },
   { to: '/calendar', labelKey: 'calendar', icon: CalendarDays },
   { to: '/notifications', labelKey: 'notifications', icon: Bell },
   { to: '/ott', labelKey: 'ott', icon: BookMarked },

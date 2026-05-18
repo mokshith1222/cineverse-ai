@@ -71,7 +71,8 @@ export default function UpcomingEpisodesSection({
               >
                 <img
                   src={row.episode.imageMedium || row.show.poster}
-                  alt=""
+                  alt={`${row.show.title} poster`}
+                  loading="lazy"
                   className="w-16 h-24 object-cover rounded-lg border border-white/10 shrink-0"
                 />
                 <div className="min-w-0 flex-1">

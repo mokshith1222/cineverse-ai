@@ -33,7 +33,11 @@ const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Terms = lazy(() => import('./pages/Terms'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 const Disclaimer = lazy(() => import('./pages/Disclaimer'));
+const EditorialPicks = lazy(() => import('./pages/EditorialPicks'));
+const WeeklyPicks = lazy(() => import('./pages/WeeklyPicks'));
 
 function RouteLoader() {
   return (
@@ -73,6 +77,10 @@ function AppShell() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-of-service" element={<TermsOfService />} />
+                <Route path="/editorial-picks" element={<EditorialPicks />} />
+                <Route path="/weekly-picks" element={<WeeklyPicks />} />
                 <Route path="/disclaimer" element={<Disclaimer />} />
 
                 <Route path="/movies/:imdbID" element={<MovieDetail />} />

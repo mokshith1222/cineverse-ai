@@ -339,7 +339,7 @@ function HomeSearch() {
                 to={item.href}
                 className="flex items-center gap-3 p-3 hover:bg-white/5 border-b border-white/5 last:border-b-0 transition-colors"
               >
-                <img src={item.poster} alt="" className="w-10 h-14 rounded-lg object-cover bg-gray-900" />
+                <img src={item.poster} alt={`${item.title} poster`} loading="lazy" className="w-10 h-14 rounded-lg object-cover bg-gray-900" />
                 <div className="min-w-0">
                   <p className="text-sm font-bold text-white truncate">{item.title}</p>
                   <p className="text-xs text-gray-500">{item.subtitle}</p>
@@ -420,7 +420,7 @@ function OttContentSection({
                 <div className="absolute top-2 left-2 right-2 flex flex-wrap gap-1">
                   {badges.map(source => (
                     <span key={source.id} className="flex items-center gap-1 rounded-md bg-black/65 border border-white/10 px-1.5 py-1 text-[9px] font-black uppercase text-white backdrop-blur-md">
-                      {source.logo_100px ? <img src={source.logo_100px} alt="" className="w-3.5 h-3.5 rounded-sm" /> : null}
+                      {source.logo_100px ? <img src={source.logo_100px} alt={`${source.name} logo`} loading="lazy" className="w-3.5 h-3.5 rounded-sm" /> : null}
                       <span className="truncate max-w-[5rem]">{source.name}</span>
                     </span>
                   ))}

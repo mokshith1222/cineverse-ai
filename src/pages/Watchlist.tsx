@@ -208,7 +208,7 @@ const Watchlist = () => {
                     to={item.item_type === 'movie' ? `/movies/${item.item_id}` : item.item_type === 'anime' ? `/anime/${item.item_id}` : `/tv/${item.item_id}`}
                     className="flex items-center gap-3 rounded-lg bg-gray-950/60 hover:bg-gray-950 border border-white/5 p-2 transition-colors"
                   >
-                    <img src={item.poster_url} alt="" className="w-8 h-11 rounded object-cover bg-gray-800" />
+                    <img src={item.poster_url} alt={`${item.title} poster`} loading="lazy" className="w-8 h-11 rounded object-cover bg-gray-800" />
                     <div className="min-w-0">
                       <p className="text-sm font-bold text-white truncate">{item.title}</p>
                       <p className="text-[10px] uppercase text-gray-500">{item.item_type}</p>

@@ -813,7 +813,7 @@ export default function OTTTracker() {
                           onClick={() => selectShow(item)}
                           className="w-full flex items-center gap-3 p-3 hover:bg-white/5 transition-colors text-left border-b border-white/5 last:border-0"
                         >
-                          <img src={item.poster || 'https://via.placeholder.com/150'} className="w-10 h-14 object-cover rounded-lg" alt="" />
+                          <img src={item.poster || 'https://via.placeholder.com/150'} className="w-10 h-14 object-cover rounded-lg" alt={`${item.title} poster`} loading="lazy" />
                           <div>
                             <p className="text-white text-sm font-bold line-clamp-1">{item.title}</p>
                             <div className="flex items-center gap-2 text-[10px] text-gray-500 font-bold uppercase">
@@ -882,7 +882,7 @@ export default function OTTTracker() {
 
               {newShow.poster_url && (
                 <div className="flex items-center gap-3 p-3 bg-cyan-400/5 border border-cyan-400/20 rounded-2xl animate-in slide-in-from-bottom-2">
-                   <img src={newShow.poster_url} className="w-12 h-16 object-cover rounded-lg" alt="" />
+                   <img src={newShow.poster_url} className="w-12 h-16 object-cover rounded-lg" alt={`${newShow.title} poster`} loading="lazy" />
                    <div className="flex-1">
                       <p className="text-white text-xs font-bold leading-tight">Selected Title</p>
                       <p className="text-cyan-400 text-[10px] font-black uppercase tracking-widest mt-1">{newShow.title}</p>

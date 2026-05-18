@@ -46,7 +46,9 @@ export default function TvScheduleSection({
               <div className="flex items-start gap-3 min-w-0 flex-1">
                 <img
                   src={row.show.poster}
-                  alt=""
+                  alt={`${row.show.title} poster`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-14 h-20 object-cover rounded-lg border border-white/10 shrink-0 hidden sm:block"
                 />
                 <div className="min-w-0">

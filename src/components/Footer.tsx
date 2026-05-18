@@ -57,6 +57,8 @@ export default function Footer() {
                 { to: '/movies', label: 'Movies' },
                 { to: '/anime', label: 'Anime' },
                 { to: '/trailers', label: 'Trailers' },
+                { to: '/editorial-picks', label: 'Editorial Picks' },
+                { to: '/weekly-picks', label: 'Weekly Picks' },
                 { to: '/ott', label: 'OTT Tracker' },
               ].map(({ to, label }) => (
                 <li key={to}>

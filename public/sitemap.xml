@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://cineverse.ai/</loc></url>
-  <url><loc>https://cineverse.ai/about</loc></url>
-  <url><loc>https://cineverse.ai/contact</loc></url>
-  <url><loc>https://cineverse.ai/privacy</loc></url>
-  <url><loc>https://cineverse.ai/terms</loc></url>
-  <url><loc>https://cineverse.ai/disclaimer</loc></url>
-  <url><loc>https://cineverse.ai/movies</loc></url>
-  <url><loc>https://cineverse.ai/anime</loc></url>
-  <url><loc>https://cineverse.ai/tv</loc></url>
-  <url><loc>https://cineverse.ai/calendar</loc></url>
-  <url><loc>https://cineverse.ai/trailers</loc></url>
-  <url><loc>https://cineverse.ai/ott</loc></url>
+  <url>
+    <loc>https://cineverse-ai-gules.vercel.app/</loc>
+  </url>
+  <url>
+    <loc>https://cineverse-ai-gules.vercel.app/about</loc>
+  </url>
+  <url>
+    <loc>https://cineverse-ai-gules.vercel.app/contact</loc>
+  </url>
+  <url>
+    <loc>https://cineverse-ai-gules.vercel.app/privacy-policy</loc>
+  </url>
+  <url>
+    <loc>https://cineverse-ai-gules.vercel.app/terms</loc>
+  </url>
+  <url>
+    <loc>https://cineverse-ai-gules.vercel.app/editorial-picks</loc>
+  </url>
 </urlset>

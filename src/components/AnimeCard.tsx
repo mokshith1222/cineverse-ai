@@ -25,6 +25,8 @@ export default function AnimeCard({ anime }: Props) {
       <img
         src={anime.poster}
         alt={anime.title}
+        loading="lazy"
+        decoding="async"
         className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
 
