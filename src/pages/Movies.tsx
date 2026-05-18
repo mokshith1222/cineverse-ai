@@ -4,6 +4,7 @@ import MovieCard from '../components/MovieCard';
 import SectionHeader from '../components/SectionHeader';
 import SortDropdown from '../components/SortDropdown';
 import TipsModal from '../components/TipsModal';
+import Seo from '../components/Seo';
 import { discoverTvdbMovies, fetchTrendingMovies, getMovieByImdbId, mapDetailToMovie, searchMovies } from '../lib/omdb';
 import { trendingMovies } from '../data/movies';
 import type { Movie } from '../types';
@@ -237,6 +238,10 @@ export default function Movies() {
 
   return (
     <div className="bg-gray-950 min-h-screen pt-20">
+      <Seo
+        title="Movies | CineVerse AI"
+        description="Search, sort, and discover premium movie recommendations with live metadata, curated trending titles, and editorial discovery context."
+      />
       <div className="relative border-b border-white/5">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">

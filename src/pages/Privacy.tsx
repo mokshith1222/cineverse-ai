@@ -1,11 +1,17 @@
 import { Shield, Eye, Lock, Globe } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
+import Seo from '../components/Seo';
 
 export default function Privacy() {
   const lastUpdated = "May 16, 2026";
 
   return (
     <div className="bg-gray-950 min-h-screen pt-24 pb-16">
+      <Seo
+        title="Privacy Policy | CineVerse AI"
+        description="Read how CineVerse AI collects, uses, and protects personal data, cookies, analytics, and advertising-related information."
+        noIndex={false}
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader 
           title="Privacy Policy" 

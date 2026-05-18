@@ -5,6 +5,7 @@ import MovieCard from '../components/MovieCard';
 import AnimeCard from '../components/AnimeCard';
 import TvCard from '../components/TvCard';
 import SectionHeader from '../components/SectionHeader';
+import Seo from '../components/Seo';
 import { searchMovies } from '../lib/omdb';
 import { searchAnime } from '../lib/jikan';
 import { mapJikanAnime } from '../lib/jikanMap';
@@ -100,6 +101,11 @@ export default function SearchResults() {
 
   return (
     <div className="bg-gray-950 min-h-screen pt-20">
+      <Seo
+        title={query.length >= 2 ? `Search results for ${query} | CineVerse AI` : 'Search | CineVerse AI'}
+        description="Search across movies, anime, and TV shows with live API results and smart discovery filtering."
+        noIndex
+      />
       <div className="relative overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">

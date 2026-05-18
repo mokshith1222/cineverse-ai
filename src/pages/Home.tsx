@@ -16,6 +16,8 @@ import {
 import HeroSection, { FeaturedHeroItem } from '../components/HeroSection';
 import TrailerCard from '../components/TrailerCard';
 import SectionHeader from '../components/SectionHeader';
+import Seo from '../components/Seo';
+import EditorialCollectionCard from '../components/EditorialCollectionCard';
 import TrendingMoviesShowcase from '../components/TrendingMoviesShowcase';
 import TrendingAnimeShowcase from '../components/TrendingAnimeShowcase';
 import TrendingTvShowcase from '../components/TrendingTvShowcase';
@@ -67,6 +69,7 @@ import { fetchHomeCms } from '../cms/sanityClient';
 import { fallbackCmsHome } from '../cms/fallbackContent';
 import { isFeatureEnabled } from '../config/platform';
 import { buildMoodRecommendations, type DiscoveryMood } from '../features/aiRecommendations';
+import { getRotatedEditorialCollections } from '../data/editorialCollections';
 import type { CmsHomePayload } from '../cms/types';
 import type { Anime, Movie, Trailer, TvAiringRow, TvShow } from '../types';
 
@@ -484,9 +487,6 @@ export default function Home() {
     fetchHomeCms().then(payload => {
       if (cancelled) return;
       setCms(payload);
-      document.title = payload.seo.title;
-      const meta = document.querySelector('meta[name="description"]');
-      if (meta) meta.setAttribute('content', payload.seo.description);
     });
     return () => {
       cancelled = true;
@@ -676,6 +676,23 @@ export default function Home() {
 
   return (
     <div className="bg-gray-950 min-h-screen">
+      <Seo
+        title={cms.seo.title}
+        description={cms.seo.description}
+        image={cms.seo.image}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'CineVerse AI',
+          url: 'https://cineverse.ai',
+          description: cms.seo.description,
+          potentialAction: {
+            '@type': 'SearchAction',
+            target: 'https://cineverse.ai/search?q={search_term_string}',
+            'query-input': 'required name=search_term_string',
+          },
+        }}
+      />
       <HeroSection items={heroItems} loading={anyLoading && heroItems.length === 0} />
       <HomeSearch />
 
@@ -783,6 +800,20 @@ export default function Home() {
             </div>
           </section>
         )}
+
+        <section>
+          <SectionHeader
+            title="Editorial Discovery Studio"
+            subtitle={`Rotating weekly editorial picks — week ${Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000)) % 52}`}
+            accent="blue"
+            icon={<Star className="w-5 h-5" />}
+          />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            {getRotatedEditorialCollections().map((collection, index) => (
+              <EditorialCollectionCard key={collection.title} collection={collection} index={index} />
+            ))}
+          </div>
+        </section>
 
         <section>
           <SectionHeader

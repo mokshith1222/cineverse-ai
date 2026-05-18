@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, MessageSquare, Send, MapPin, Loader2 } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
+import Seo from '../components/Seo';
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
@@ -19,13 +20,30 @@ export default function Contact() {
 
   return (
     <div className="bg-gray-950 min-h-screen pt-24 pb-16">
+      <Seo
+        title="Contact CineVerse AI | Partnerships, Support & Editorial Requests"
+        description="Contact the CineVerse AI team for support, advertising, editorial feedback, copyright concerns, or partnership inquiries."
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader 
           title="Contact Us" 
-          subtitle="Get in touch with the CineVerse team"
+          subtitle="Support, editorial, advertising, and copyright contact in one place"
           accent="cyan"
           icon={<Mail className="w-6 h-6" />}
         />
+
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            { label: 'Response window', value: '24-48 hours' },
+            { label: 'Use this for', value: 'Support, partnerships, feedback, and copyright requests' },
+            { label: 'Tone', value: 'Professional, concise, and advertiser-friendly' },
+          ].map(item => (
+            <div key={item.label} className="rounded-2xl border border-white/5 bg-white/[0.03] p-5 backdrop-blur-sm">
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-300">{item.label}</p>
+              <p className="mt-2 text-sm font-bold text-white leading-6">{item.value}</p>
+            </div>
+          ))}
+        </div>
 
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Contact Info */}
@@ -62,7 +80,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-white text-sm font-bold">Support</p>
-                    <p className="text-gray-500 text-sm">Email support (typical response: 24–48 hours)</p>
+                    <p className="text-gray-500 text-sm">Best for troubleshooting, content feedback, and partnership inquiries.</p>
                   </div>
                 </div>
               </div>
@@ -70,7 +88,14 @@ export default function Contact() {
 
             <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-3xl p-8 border border-cyan-400/10">
               <p className="text-gray-400 text-sm">
-                For copyright concerns or reporting content, please use "REPORT" in your email subject line.
+                For copyright concerns or reporting content, please use "REPORT" or "DMCA" in your email subject line so the request is triaged quickly.
+              </p>
+            </div>
+
+            <div className="bg-gray-900/50 rounded-3xl p-8 border border-white/5 backdrop-blur-sm">
+              <h3 className="text-white text-xl font-bold mb-4">Editorial & ad policy</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                CineVerse maintains clear separation between editorial discovery content, metadata sources, and advertising placements. If you are a brand, studio, or media publisher, this is the right channel for collaboration requests and correction notices.
               </p>
             </div>
           </div>

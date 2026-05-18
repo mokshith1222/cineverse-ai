@@ -1,11 +1,16 @@
 import { FileText, Gavel, AlertTriangle, Scale } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
+import Seo from '../components/Seo';
 
 export default function Terms() {
   const lastUpdated = "May 16, 2026";
 
   return (
     <div className="bg-gray-950 min-h-screen pt-24 pb-16">
+      <Seo
+        title="Terms & Conditions | CineVerse AI"
+        description="Review the terms for using CineVerse AI, including permitted use, third-party data, advertising, and legal disclaimers."
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader 
           title="Terms & Conditions" 

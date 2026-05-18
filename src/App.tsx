@@ -1,7 +1,9 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import AmbientBackdrop from './components/AmbientBackdrop';
 
 import { AuthProvider } from './contexts/AuthContext';
 import { ToastProvider } from './contexts/ToastContext';
@@ -35,8 +37,84 @@ const Disclaimer = lazy(() => import('./pages/Disclaimer'));
 
 function RouteLoader() {
   return (
-    <div className="flex min-h-[60vh] items-center justify-center bg-gray-950">
+    <div className="flex min-h-[60vh] items-center justify-center bg-transparent">
       <div className="h-10 w-10 rounded-full border-2 border-cyan-400/30 border-t-cyan-400 animate-spin" />
+    </div>
+  );
+}
+
+function AppShell() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
+  return (
+    <div className="relative min-h-screen overflow-x-hidden bg-gray-950 text-white">
+      <AmbientBackdrop />
+      <Navbar />
+      <main className="relative z-10">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 18, scale: 0.995 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -12, scale: 0.995 }}
+            transition={{ duration: 0.32, ease: 'easeOut' }}
+          >
+            <Suspense fallback={<RouteLoader />}>
+              <Routes location={location}>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/disclaimer" element={<Disclaimer />} />
+
+                <Route path="/movies/:imdbID" element={<MovieDetail />} />
+                <Route path="/movies" element={<Movies />} />
+                <Route path="/anime/:malId" element={<AnimeDetail />} />
+                <Route path="/anime" element={<Anime />} />
+                <Route path="/tv/:showId/episodes" element={<TvEpisodes />} />
+                <Route path="/tv/:showId" element={<TvDetail />} />
+                <Route path="/tv" element={<Tv />} />
+                <Route path="/calendar" element={<ReleaseCalendar />} />
+                <Route path="/notifications" element={<Notifications />} />
+                <Route path="/search" element={<SearchResults />} />
+                <Route
+                  path="/watchlist"
+                  element={
+                    <ProtectedRoute>
+                      <Watchlist />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/trailers"
+                  element={
+                    <ProtectedRoute>
+                      <Trailers />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/ott"
+                  element={
+                    <ProtectedRoute>
+                      <OTTTracker />
+                    </ProtectedRoute>
+                  }
+                />
+              </Routes>
+            </Suspense>
+          </motion.div>
+        </AnimatePresence>
+      </main>
+      <Footer />
     </div>
   );
 }
@@ -49,62 +127,11 @@ function App() {
           <WatchlistProvider>
             <OTTTrackerProvider>
               <LanguageProvider>
-              <BrowserRouter>
-                <div className="bg-gray-950 min-h-screen">
-                  <Navbar />
-                  <main>
-                    <Suspense fallback={<RouteLoader />}>
-                    <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-
-                    <Route path="/about" element={<About />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/privacy" element={<Privacy />} />
-                    <Route path="/terms" element={<Terms />} />
-                    <Route path="/disclaimer" element={<Disclaimer />} />
-
-                    <Route path="/movies/:imdbID" element={<MovieDetail />} />
-                    <Route path="/movies" element={<Movies />} />
-                    <Route path="/anime/:malId" element={<AnimeDetail />} />
-                    <Route path="/anime" element={<Anime />} />
-                    <Route path="/tv/:showId/episodes" element={<TvEpisodes />} />
-                    <Route path="/tv/:showId" element={<TvDetail />} />
-                    <Route path="/tv" element={<Tv />} />
-                    <Route path="/calendar" element={<ReleaseCalendar />} />
-                    <Route path="/notifications" element={<Notifications />} />
-                    <Route path="/search" element={<SearchResults />} />
-                    <Route 
-                      path="/watchlist" 
-                      element={
-                        <ProtectedRoute>
-                          <Watchlist />
-                        </ProtectedRoute>
-                      } 
-                    />
-                    <Route 
-                      path="/trailers" 
-                      element={
-                        <ProtectedRoute>
-                          <Trailers />
-                        </ProtectedRoute>
-                      } 
-                    />
-                    <Route 
-                      path="/ott" 
-                      element={
-                        <ProtectedRoute>
-                          <OTTTracker />
-                        </ProtectedRoute>
-                      } 
-                    />
-                    </Routes>
-                    </Suspense>
-                  </main>
-                  <Footer />
-                </div>
-              </BrowserRouter>
+                <BrowserRouter>
+                  <MotionConfig reducedMotion="user">
+                    <AppShell />
+                  </MotionConfig>
+                </BrowserRouter>
               </LanguageProvider>
             </OTTTrackerProvider>
           </WatchlistProvider>

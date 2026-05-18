@@ -5,6 +5,7 @@ import TvGridSkeleton from '../components/TvGridSkeleton';
 import TvScheduleSection from '../components/TvScheduleSection';
 import UpcomingEpisodesSection from '../components/UpcomingEpisodesSection';
 import SectionHeader from '../components/SectionHeader';
+import Seo from '../components/Seo';
 import {
   TvMazeApiError,
   getShowsPage,
@@ -140,6 +141,10 @@ export default function Tv() {
 
   return (
     <div className="bg-gray-950 min-h-screen pt-20">
+      <Seo
+        title="TV Shows | CineVerse AI"
+        description="Browse TV shows, schedules, and live discovery content with editorial context and premium streaming-style UI."
+      />
       <div className="relative overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Bell, CalendarDays, Film, Languages, Tv, Play, BookMarked, TrendingUp, Search, Menu, X, Zap, MonitorPlay, LogIn, LogOut, User as UserIcon, Bookmark } from 'lucide-react';
+import { Bell, CalendarDays, Film, Languages, Play, BookMarked, TrendingUp, Search, Menu, X, Zap, MonitorPlay, LogIn, LogOut, User as UserIcon, Bookmark } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { languageOptions, useLanguage } from '../contexts/LanguageContext';
 import VoiceSearchButton from './VoiceSearchButton';
 import { buildSearchUrl } from '../lib/smartSearch';
+import { Logo } from './Logo';
 
 function navActive(pathname: string, to: string): boolean {
   if (to === '/') return pathname === '/';
@@ -73,18 +74,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="relative">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 group-hover:shadow-cyan-500/60 transition-shadow">
-                <Tv className="w-4 h-4 text-white" />
-              </div>
-              <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-cyan-400 rounded-full animate-pulse" />
-            </div>
-            <span className="text-xl font-bold tracking-tight">
-              <span className="text-white">Cine</span>
-              <span className="text-cyan-400">Verse</span>
-              <span className="text-cyan-300 text-xs font-medium ml-1 bg-cyan-400/10 px-1.5 py-0.5 rounded border border-cyan-400/20">AI</span>
-            </span>
+          <Link to="/" className="flex items-center gap-1.5 group">
+            <Logo size="sm" showText={true} />
           </Link>
 
           {/* Desktop Nav */}

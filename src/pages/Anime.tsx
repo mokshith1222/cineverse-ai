@@ -5,6 +5,7 @@ import SectionHeader from '../components/SectionHeader';
 import SeasonalAnimeSection from '../components/SeasonalAnimeSection';
 import TrendingAnimeShowcase from '../components/TrendingAnimeShowcase';
 import AnimeGridSkeleton from '../components/AnimeGridSkeleton';
+import Seo from '../components/Seo';
 import {
   JikanApiError,
   fetchSeasonNow,
@@ -192,6 +193,10 @@ export default function Anime() {
 
   return (
     <div className="bg-gray-950 min-h-screen pt-20">
+      <Seo
+        title="Anime | CineVerse AI"
+        description="Discover seasonal anime, trending series, and curated anime recommendations with a polished browsing experience."
+      />
       <div className="relative overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">

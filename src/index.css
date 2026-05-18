@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -30,10 +30,24 @@
 
   body {
     font-family: 'Inter', sans-serif;
-    background-color: #030712;
+    background-color: #020617;
+    background-image:
+      radial-gradient(circle at top, rgba(34, 211, 238, 0.08), transparent 34%),
+      radial-gradient(circle at 85% 15%, rgba(59, 130, 246, 0.08), transparent 28%),
+      linear-gradient(180deg, #020617 0%, #030712 45%, #020617 100%);
     color: #f9fafb;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.25);
+    color: #ffffff;
   }
 
   select option {
@@ -69,8 +83,36 @@
     --tw-enter-translate-x: 20px;
   }
 
+  .slide-in-from-bottom-4 {
+    --tw-enter-translate-y: 16px;
+  }
+
+  .zoom-in-95 {
+    --tw-enter-scale: 0.95;
+  }
+
   .duration-500 {
     animation-duration: 500ms;
+  }
+
+  .duration-700 {
+    animation-duration: 700ms;
+  }
+
+  .duration-200 {
+    animation-duration: 200ms;
+  }
+
+  .animate-float-slow {
+    animation: floatSlow 14s ease-in-out infinite;
+  }
+
+  .animate-float-medium {
+    animation: floatMedium 10s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulseSoft 8s ease-in-out infinite;
   }
 
   @keyframes enter {
@@ -82,6 +124,21 @@
       opacity: 1;
       transform: scale(1) translateX(0) translateY(0);
     }
+  }
+
+  @keyframes floatSlow {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -18px, 0); }
+  }
+
+  @keyframes floatMedium {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -10px, 0); }
+  }
+
+  @keyframes pulseSoft {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.05); }
   }
 
   .line-clamp-2 {

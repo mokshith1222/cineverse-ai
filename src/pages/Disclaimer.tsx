@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom';
 import { AlertOctagon, HelpCircle, HardDrive, Cpu } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
+import Seo from '../components/Seo';
 
 export default function Disclaimer() {
   return (
     <div className="bg-gray-950 min-h-screen pt-24 pb-16">
+      <Seo
+        title="Disclaimer | CineVerse AI"
+        description="Read CineVerse AI's disclaimer covering media hosting, third-party APIs, trademarks, advertising, and external links."
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader 
           title="Disclaimer" 
