@@ -62,6 +62,12 @@ import {
 import { trendingMovies as fallbackMovies } from '../data/movies';
 import { featuredTrailers } from '../data/trailers';
 import { buildSearchUrl } from '../lib/smartSearch';
+import AdSlot from '../components/ads/AdSlot';
+import { fetchHomeCms } from '../cms/sanityClient';
+import { fallbackCmsHome } from '../cms/fallbackContent';
+import { isFeatureEnabled } from '../config/platform';
+import { buildMoodRecommendations, type DiscoveryMood } from '../features/aiRecommendations';
+import type { CmsHomePayload } from '../cms/types';
 import type { Anime, Movie, Trailer, TvAiringRow, TvShow } from '../types';
 
 const REFRESH_MS = 10 * 60 * 1000;
@@ -449,6 +455,8 @@ function OttContentSection({
 }
 
 export default function Home() {
+  const [cms, setCms] = useState<CmsHomePayload>(fallbackCmsHome);
+  const [mood, setMood] = useState<DiscoveryMood>('epic');
   const [movies, setMovies] = useState<Movie[]>([]);
   const [moviesLoading, setMoviesLoading] = useState(true);
   const [moviesErr, setMoviesErr] = useState<string | null>(null);
@@ -470,6 +478,20 @@ export default function Home() {
 
   const [trailers, setTrailers] = useState<Trailer[]>([]);
   const [trailersLoading, setTrailersLoading] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchHomeCms().then(payload => {
+      if (cancelled) return;
+      setCms(payload);
+      document.title = payload.seo.title;
+      const meta = document.querySelector('meta[name="description"]');
+      if (meta) meta.setAttribute('content', payload.seo.description);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const loadMovies = useCallback(async () => {
     setMoviesLoading(true);
@@ -583,6 +605,12 @@ export default function Home() {
   }, [loadAnime, loadMovies, loadOtt, loadTv]);
 
   useEffect(() => {
+    if (cms.featuredTrailers.length > 0) {
+      setTrailers(cms.featuredTrailers.slice(0, 3));
+      setTrailersLoading(false);
+      return;
+    }
+
     const trailerSource = [
       ...movies.slice(0, 3).map(item => ({ title: item.title, year: String(item.year || ''), type: 'Movie' as const, imdbID: item.imdbID })),
       ...popularAnime.slice(0, 2).map(item => ({ title: item.title, year: String(item.year || ''), type: 'Anime' as const })),
@@ -626,14 +654,23 @@ export default function Home() {
     return () => {
       cancelled = true;
     };
-  }, [movies, popularAnime, tvTrendingShows]);
+  }, [cms.featuredTrailers, movies, popularAnime, tvTrendingShows]);
 
   const heroItems = useMemo(() => uniqueById<FeaturedHeroItem>([
+    ...cms.hero,
     ...movies.slice(0, 2).map(movieHero),
     ...popularAnime.slice(0, 1).map(animeHero),
     ...tvTrendingShows.slice(0, 1).map(tvHero),
     ...ottTitles.slice(0, 1).map(ottHero),
-  ]), [movies, ottTitles, popularAnime, tvTrendingShows]);
+    ...cms.editorPicks.slice(0, 1),
+  ]), [cms.editorPicks, cms.hero, movies, ottTitles, popularAnime, tvTrendingShows]);
+
+  const moodRecommendations = useMemo(
+    () => buildMoodRecommendations(mood, { movies, anime: popularAnime, tv: tvTrendingShows }),
+    [mood, movies, popularAnime, tvTrendingShows],
+  );
+
+  const homepageAd = cms.adSlots.find(slot => slot.placement === 'homepage-inline');
 
   const anyLoading = moviesLoading || animeLoading || tvLoading || ottLoading;
 
@@ -667,6 +704,20 @@ export default function Home() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+        {cms.banners.filter(banner => banner.visible && banner.placement === 'homepage').map(banner => (
+          <Link
+            key={banner.id}
+            to={banner.href || '/about'}
+            className="block overflow-hidden rounded-xl border border-cyan-400/20 bg-cyan-400/10 p-5 transition-all hover:border-cyan-300/40 hover:bg-cyan-400/15"
+          >
+            <p className="text-xs font-black uppercase tracking-widest text-cyan-300">Managed in Sanity</p>
+            <h2 className="mt-2 text-2xl font-black text-white">{banner.title}</h2>
+            {banner.subtitle ? <p className="mt-1 max-w-3xl text-sm leading-6 text-gray-400">{banner.subtitle}</p> : null}
+          </Link>
+        ))}
+
+        <AdSlot slot={homepageAd} />
+
         <TrendingMoviesShowcase
           movies={movies}
           loading={moviesLoading}
@@ -689,6 +740,49 @@ export default function Home() {
           loading={ottLoading}
           error={ottErr}
         />
+
+        {isFeatureEnabled('aiRecommendations') && (
+          <section>
+            <SectionHeader
+              title="AI Mood Picks"
+              subtitle="Config-ready recommendation scoring that can be swapped for OpenAI, embeddings, or Supabase vector search"
+              accent="emerald"
+              icon={<Zap className="w-5 h-5" />}
+            />
+            <div className="mb-5 flex flex-wrap gap-2">
+              {(['epic', 'cozy', 'dark', 'funny', 'mind-bending'] as DiscoveryMood[]).map(option => (
+                <button
+                  key={option}
+                  type="button"
+                  onClick={() => setMood(option)}
+                  className={`rounded-xl border px-4 py-2 text-xs font-black uppercase tracking-widest transition-all ${
+                    mood === option
+                      ? 'border-emerald-300 bg-emerald-400 text-gray-950'
+                      : 'border-white/10 bg-gray-900/60 text-gray-500 hover:border-emerald-300/40 hover:text-white'
+                  }`}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {moodRecommendations.map(item => (
+                <Link
+                  key={item.id}
+                  to={item.href}
+                  className="group flex gap-4 rounded-xl border border-white/5 bg-gray-900/50 p-3 transition-all hover:border-emerald-300/30 hover:bg-gray-900"
+                >
+                  <img src={item.poster} alt="" loading="lazy" className="h-24 w-16 rounded-lg object-cover bg-gray-950" />
+                  <div className="min-w-0">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-emerald-300">{item.type}</span>
+                    <h3 className="mt-1 truncate font-black text-white group-hover:text-emerald-100">{item.title}</h3>
+                    <p className="mt-1 line-clamp-2 text-xs leading-5 text-gray-500">{item.reason}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section>
           <SectionHeader
@@ -718,7 +812,7 @@ export default function Home() {
         <section>
           <SectionHeader
             title="Featured Trailers"
-            subtitle="YouTube trailer lookups for currently trending titles"
+            subtitle="Client-managed YouTube embeds with cached fallback support"
             viewAllTo="/trailers"
             accent="blue"
             icon={<Play className="w-5 h-5" />}

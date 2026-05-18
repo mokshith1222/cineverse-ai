@@ -10,6 +10,8 @@ import { getShowsPage, searchShows } from '../lib/tvmaze';
 import { dedupeShows, mapTvMazeShow, trendingShowsFromSchedule } from '../lib/tvmazeMap';
 import { fetchOfficialTrailerVideoId, youtubeThumbnailUrl } from '../lib/youtube';
 import { featuredTrailers } from '../data/trailers';
+import { fetchHomeCms } from '../cms/sanityClient';
+import { isFeatureEnabled } from '../config/platform';
 import type { Trailer } from '../types';
 
 const types: Array<Trailer['type'] | 'All'> = ['All', 'Movie', 'Anime', 'Series'];
@@ -91,6 +93,10 @@ async function seriesCandidates(): Promise<TrailerCandidate[]> {
 }
 
 async function fetchDynamicTrailers(): Promise<Trailer[]> {
+  const cms = await fetchHomeCms();
+  if (cms.featuredTrailers.length > 0) return cms.featuredTrailers;
+  if (!isFeatureEnabled('trailerSearchFallback')) return featuredTrailers;
+
   const candidateResults = await Promise.allSettled([
     movieCandidates(),
     animeCandidates(),
@@ -167,6 +173,17 @@ async function resolveTrailers(candidates: TrailerCandidate[], limit = 12): Prom
 
 async function searchTrailerResults(query: string): Promise<Trailer[]> {
   console.debug('[Trailers] Searching trailer candidates', { query });
+  const cms = await fetchHomeCms();
+  const stored = [...cms.featuredTrailers, ...featuredTrailers];
+  const normalized = query.toLowerCase();
+  const storedMatches = stored.filter(trailer =>
+    trailer.title.toLowerCase().includes(normalized)
+    || trailer.type.toLowerCase().includes(normalized),
+  );
+  if (storedMatches.length > 0 || !isFeatureEnabled('trailerSearchFallback')) {
+    return storedMatches;
+  }
+
   const [moviesRes, animeRes, tvRes] = await Promise.allSettled([
     searchMovies(query, 1),
     searchAnime({ query, page: 1, limit: 6 }),
@@ -204,7 +221,6 @@ async function searchTrailerResults(query: string): Promise<Trailer[]> {
   const rows = await resolveTrailers(candidates, 12);
   if (rows.length > 0) return rows;
 
-  const normalized = query.toLowerCase();
   return featuredTrailers.filter(trailer =>
     trailer.title.toLowerCase().includes(normalized)
     || trailer.type.toLowerCase().includes(normalized),

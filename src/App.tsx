@@ -1,12 +1,7 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import { 
-  Home, Movies, MovieDetail, Anime, AnimeDetail, 
-  Tv, TvDetail, TvEpisodes, Trailers, OTTTracker, 
-  Login, Signup, Watchlist, ReleaseCalendar, Notifications,
-  SearchResults, About, Contact, Privacy, Terms, Disclaimer
-} from './pages';
 
 import { AuthProvider } from './contexts/AuthContext';
 import { ToastProvider } from './contexts/ToastContext';
@@ -14,19 +9,52 @@ import { WatchlistProvider } from './contexts/WatchlistContext';
 import { OTTTrackerProvider } from './contexts/OTTTrackerContext';
 import { LanguageProvider } from './contexts/LanguageContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import ErrorBoundary from './components/system/ErrorBoundary';
+
+const Home = lazy(() => import('./pages/Home'));
+const Movies = lazy(() => import('./pages/Movies'));
+const MovieDetail = lazy(() => import('./pages/MovieDetail'));
+const Anime = lazy(() => import('./pages/Anime'));
+const AnimeDetail = lazy(() => import('./pages/AnimeDetail'));
+const Tv = lazy(() => import('./pages/Tv'));
+const TvDetail = lazy(() => import('./pages/TvDetail'));
+const TvEpisodes = lazy(() => import('./pages/TvEpisodes'));
+const Trailers = lazy(() => import('./pages/Trailers'));
+const OTTTracker = lazy(() => import('./pages/OTTTracker'));
+const Login = lazy(() => import('./pages/Login'));
+const Signup = lazy(() => import('./pages/Signup'));
+const Watchlist = lazy(() => import('./pages/Watchlist'));
+const ReleaseCalendar = lazy(() => import('./pages/ReleaseCalendar'));
+const Notifications = lazy(() => import('./pages/Notifications'));
+const SearchResults = lazy(() => import('./pages/SearchResults'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Terms = lazy(() => import('./pages/Terms'));
+const Disclaimer = lazy(() => import('./pages/Disclaimer'));
+
+function RouteLoader() {
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center bg-gray-950">
+      <div className="h-10 w-10 rounded-full border-2 border-cyan-400/30 border-t-cyan-400 animate-spin" />
+    </div>
+  );
+}
 
 function App() {
   return (
-    <AuthProvider>
-      <ToastProvider>
-        <WatchlistProvider>
-          <OTTTrackerProvider>
-            <LanguageProvider>
-            <BrowserRouter>
-              <div className="bg-gray-950 min-h-screen">
-                <Navbar />
-                <main>
-                  <Routes>
+    <ErrorBoundary>
+      <AuthProvider>
+        <ToastProvider>
+          <WatchlistProvider>
+            <OTTTrackerProvider>
+              <LanguageProvider>
+              <BrowserRouter>
+                <div className="bg-gray-950 min-h-screen">
+                  <Navbar />
+                  <main>
+                    <Suspense fallback={<RouteLoader />}>
+                    <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
@@ -71,16 +99,18 @@ function App() {
                         </ProtectedRoute>
                       } 
                     />
-                  </Routes>
-                </main>
-                <Footer />
-              </div>
-            </BrowserRouter>
-            </LanguageProvider>
-          </OTTTrackerProvider>
-        </WatchlistProvider>
-      </ToastProvider>
-    </AuthProvider>
+                    </Routes>
+                    </Suspense>
+                  </main>
+                  <Footer />
+                </div>
+              </BrowserRouter>
+              </LanguageProvider>
+            </OTTTrackerProvider>
+          </WatchlistProvider>
+        </ToastProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }
 

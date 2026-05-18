@@ -1,4 +1,6 @@
 import type { YouTubeSearchItem, YouTubeSearchResponse } from './youtubeTypes';
+import { isFeatureEnabled } from '../config/platform';
+import { featuredTrailers } from '../data/trailers';
 
 const YT_SEARCH = 'https://www.googleapis.com/youtube/v3/search';
 
@@ -201,6 +203,15 @@ export interface TrailerLookupParams {
   year: string;
   /** When set, responses are cached per title — avoids repeat searches when revisiting a movie. */
   imdbID?: string;
+  storedYoutubeId?: string;
+}
+
+function findStoredTrailer(title: string): string | null {
+  const normalized = normalizeTitle(title);
+  if (!normalized) return null;
+
+  const exact = featuredTrailers.find(trailer => normalizeTitle(trailer.title).includes(normalized));
+  return exact?.youtubeId ?? null;
 }
 
 /**
@@ -212,10 +223,20 @@ export async function fetchOfficialTrailerVideoId(params: TrailerLookupParams): 
   const year = params.year.trim();
   if (!title) return null;
 
+  if (params.storedYoutubeId) return params.storedYoutubeId;
+
   const key = cacheKey(params.imdbID, title, year);
 
   const hit = getCached(key);
   if (hit !== undefined) return hit;
+
+  const stored = findStoredTrailer(title);
+  if (stored) return remember(key, stored);
+
+  if (!isFeatureEnabled('trailerSearchFallback')) {
+    console.debug('[YouTube] Search fallback disabled; using stored trailer data only', { title });
+    return remember(key, null);
+  }
 
   const existing = IN_FLIGHT.get(key);
   if (existing) return existing;

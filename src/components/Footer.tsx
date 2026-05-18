@@ -1,7 +1,25 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Tv, Github, Twitter, Instagram } from 'lucide-react';
+import { fallbackCmsHome } from '../cms/fallbackContent';
+import { fetchHomeCms } from '../cms/sanityClient';
+import type { CmsFooter } from '../cms/types';
 
 export default function Footer() {
+  const [footer, setFooter] = useState<CmsFooter>(fallbackCmsHome.footer);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchHomeCms().then(payload => {
+      if (!cancelled) setFooter(payload.footer);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const socialIcons = [Github, Twitter, Instagram];
+
   return (
     <footer className="bg-gray-950 border-t border-white/5 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -18,14 +36,17 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
-              Your AI-powered entertainment hub. Discover movies, anime, and manage your OTT subscriptions in one place.
+              {footer.description}
             </p>
             <div className="flex gap-3 mt-4">
-              {[Github, Twitter, Instagram].map((Icon, i) => (
-                <a key={i} href="#" className="w-8 h-8 bg-white/5 hover:bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+              {footer.socialLinks.map((link, i) => {
+                const Icon = socialIcons[i % socialIcons.length];
+                return (
+                <a key={link.id} href={link.href} aria-label={link.label} className="w-8 h-8 bg-white/5 hover:bg-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-colors">
                   <Icon className="w-4 h-4" />
                 </a>
-              ))}
+              );
+              })}
             </div>
           </div>
 
@@ -86,6 +107,7 @@ export default function Footer() {
             <p className="text-gray-600 text-xs">© 2026 CineVerse AI. All rights reserved.</p>
             <p className="text-gray-700 text-xs">Built for entertainment enthusiasts</p>
           </div>
+          <p className="text-gray-700 text-xs text-center sm:text-left">{footer.attribution}</p>
           <p className="text-gray-700 text-xs text-center sm:text-left">
             Cookie notice: CineVerse may use cookies for essential functionality, analytics, and (where enabled) advertising. Data is provided by third-party APIs and may be inaccurate. CineVerse does not host or stream media. See{' '}
             <Link to="/privacy" className="text-cyan-400 hover:underline">Privacy</Link>

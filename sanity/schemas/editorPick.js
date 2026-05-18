@@ -1,0 +1,21 @@
+export default {
+  name: 'editorPick',
+  title: 'Editor Pick',
+  type: 'document',
+  fields: [
+    { name: 'title', title: 'Title', type: 'string', validation: Rule => Rule.required() },
+    { name: 'label', title: 'Badge Label', type: 'string', initialValue: 'Editor Pick' },
+    { name: 'description', title: 'Description', type: 'text', rows: 4 },
+    { name: 'image', title: 'Poster Image', type: 'image', options: { hotspot: true } },
+    { name: 'backdrop', title: 'Backdrop Image', type: 'image', options: { hotspot: true } },
+    { name: 'rating', title: 'Rating', type: 'number' },
+    { name: 'year', title: 'Year', type: 'number' },
+    { name: 'genre', title: 'Genres', type: 'array', of: [{ type: 'string' }] },
+    { name: 'duration', title: 'Duration', type: 'string' },
+    { name: 'href', title: 'Details URL', type: 'string' },
+    { name: 'browseHref', title: 'Browse URL', type: 'string' },
+    { name: 'browseLabel', title: 'Browse Button Label', type: 'string' },
+    { name: 'priority', title: 'Sort Priority', type: 'number', initialValue: 10 },
+    { name: 'visible', title: 'Visible', type: 'boolean', initialValue: true },
+  ],
+};
