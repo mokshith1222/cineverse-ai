@@ -40,7 +40,7 @@ const Signup = () => {
 
   if (success) {
     return (
-      <div className="min-h-[calc(100vh-80px)] flex items-center justify-center px-4 py-12 bg-gray-950">
+      <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-gray-950">
         <div className="max-w-md w-full space-y-8 bg-gray-900/50 backdrop-blur-xl p-8 rounded-2xl border border-gray-800 shadow-2xl text-center animate-in fade-in zoom-in duration-500">
           <div className="flex justify-center">
             <CheckCircle2 className="text-green-500 h-16 w-16 animate-bounce" />
@@ -58,7 +58,7 @@ const Signup = () => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-80px)] flex items-center justify-center px-4 py-12 bg-gray-950 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-gray-950 relative overflow-hidden">
       {/* Background Orbs */}
       <div className="absolute top-1/4 -right-20 w-72 h-72 bg-indigo-600/20 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-1/4 -left-20 w-72 h-72 bg-purple-600/20 rounded-full blur-[120px] pointer-events-none"></div>

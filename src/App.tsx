@@ -49,6 +49,7 @@ function RouteLoader() {
 
 function AppShell() {
   const location = useLocation();
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/signup';
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -57,8 +58,8 @@ function AppShell() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-gray-950 text-white">
       <AmbientBackdrop />
-      <Navbar />
-      <main className="relative z-10">
+      {!isAuthPage && <Navbar />}
+      <main className={`relative z-10 ${isAuthPage ? '' : 'pt-16 md:pt-20'}`}>
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={location.pathname}
@@ -122,7 +123,7 @@ function AppShell() {
           </motion.div>
         </AnimatePresence>
       </main>
-      <Footer />
+      {!isAuthPage && <Footer />}
     </div>
   );
 }

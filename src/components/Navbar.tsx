@@ -74,28 +74,32 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between gap-3 h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-1.5 group">
             <Logo size="sm" showText={true} />
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map(({ to, labelKey, icon: Icon }) => (
-              <Link
-                key={to}
-                to={to}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  navActive(location.pathname, to)
-                    ? 'text-cyan-400 bg-cyan-400/10'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                {t(labelKey)}
-              </Link>
-            ))}
+          <div className="hidden md:flex flex-1 min-w-0 items-center justify-center px-4">
+            <div className="flex max-w-full items-center gap-1 overflow-x-auto whitespace-nowrap py-1 px-1">
+              <div className="flex min-w-max items-center gap-1">
+                {navLinks.map(({ to, labelKey, icon: Icon }) => (
+                  <Link
+                    key={to}
+                    to={to}
+                    className={`flex flex-none items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      navActive(location.pathname, to)
+                        ? 'text-cyan-400 bg-cyan-400/10'
+                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    <Icon className="w-4 h-4" />
+                    {t(labelKey)}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Right Actions */}
