@@ -41,7 +41,7 @@ export const platformConfig: PlatformConfig = {
     aiSearchEnhancement: envBool('VITE_FEATURE_AI_SEARCH', true),
     smartTrending: envBool('VITE_FEATURE_SMART_TRENDING', true),
     ads: envBool('VITE_FEATURE_ADS', false),
-    trailerSearchFallback: envBool('VITE_FEATURE_TRAILER_SEARCH_FALLBACK', false),
+    trailerSearchFallback: envBool('VITE_FEATURE_TRAILER_SEARCH_FALLBACK', true),
     ottTracker: envBool('VITE_FEATURE_OTT_TRACKER', true),
   },
   providers: {
