@@ -19,6 +19,7 @@ import type { OmdbMovieDetail } from '../lib/omdbTypes';
 import { fetchOfficialTrailerVideoId, youtubeSearchUrl } from '../lib/youtube';
 import { useWatchlist } from '../contexts/WatchlistContext';
 import WatchmodeSources from '../components/WatchmodeSources';
+import Seo from '../components/Seo';
 
 export default function MovieDetail() {
   const { imdbID } = useParams<{ imdbID: string }>();
@@ -145,6 +146,23 @@ export default function MovieDetail() {
 
           {!loading && detail && (
             <>
+              <Seo
+                title={`${detail.Title} (${detail.Year}) | Stream, Trailer & Info - CineVerse AI`}
+                description={`Find where to stream ${detail.Title} (${detail.Year}) online. Rating: ${detail.imdbRating || 'N/A'}/10. Genre: ${detail.Genre || 'N/A'}. Plot: ${detail.Plot || 'Synopsis not available.'}`}
+                image={resolvePosterUrl(detail.Poster)}
+                url={`https://cineverse-ai-gules.vercel.app/movies/${detail.imdbID}`}
+                type="video.movie"
+                schema={{
+                  '@context': 'https://schema.org',
+                  '@type': 'Movie',
+                  'name': detail.Title,
+                  'image': resolvePosterUrl(detail.Poster),
+                  'description': detail.Plot !== 'N/A' ? detail.Plot : '',
+                  'dateCreated': detail.Year,
+                  'director': detail.Director !== 'N/A' ? { '@type': 'Person', 'name': detail.Director } : undefined,
+                  'genre': detail.Genre !== 'N/A' ? detail.Genre.split(',').map((g: string) => g.trim()) : [],
+                }}
+              />
               <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
                 <div className="shrink-0 w-full max-w-xs mx-auto lg:mx-0">
                   <img

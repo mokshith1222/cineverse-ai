@@ -25,6 +25,7 @@ import type { JikanAnimeFull } from '../lib/jikanTypes';
 import { mapJikanAnime } from '../lib/jikanMap';
 import type { Anime } from '../types';
 import { useWatchlist } from '../contexts/WatchlistContext';
+import Seo from '../components/Seo';
 
 function cleanSynopsis(text: string) {
   return text.replace(/\(Source:.*?\)/gis, '').replace(/\[Written by.*?\]/gi, '').trim();
@@ -178,6 +179,21 @@ export default function AnimeDetail() {
 
   return (
     <div className="bg-gray-950 min-h-screen pt-16">
+      <Seo
+        title={`${cardAnime.title} | Anime Trailer, Status & Info - CineVerse AI`}
+        description={`Find info about ${cardAnime.title} on CineVerse AI. Status: ${cardAnime.status}. Rating: ${cardAnime.rating}/10. Genre: ${cardAnime.genre.join(', ') || 'N/A'}. Synopsis: ${synopsis.slice(0, 150)}...`}
+        image={cardAnime.poster}
+        url={`https://cineverse-ai-gules.vercel.app/anime/${detail.mal_id}`}
+        type="video.other"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'CreativeWork',
+          'name': cardAnime.title,
+          'image': cardAnime.poster,
+          'description': synopsis,
+          'genre': cardAnime.genre,
+        }}
+      />
       <div className="relative border-b border-white/5 overflow-hidden">
         {backdrop && (
           <>

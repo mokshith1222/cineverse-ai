@@ -19,6 +19,7 @@ import { mapTvMazeShow, stripHtml } from '../lib/tvmazeMap';
 import type { TvShow } from '../types';
 import { useWatchlist } from '../contexts/WatchlistContext';
 import WatchmodeSources from '../components/WatchmodeSources';
+import Seo from '../components/Seo';
 
 export default function TvDetail() {
   const { showId: sid } = useParams<{ showId: string }>();
@@ -114,6 +115,21 @@ export default function TvDetail() {
 
   return (
     <div className="bg-gray-950 min-h-screen pt-16">
+      <Seo
+        title={`${card.title} (TV Series) | Guide, Stream & Info - CineVerse AI`}
+        description={`Find where to stream ${card.title} (TV Series) online. Premiered: ${card.year || 'N/A'}. Rating: ${card.rating}/10. Genre: ${card.genre.join(', ') || 'N/A'}. Synopsis: ${synopsis.slice(0, 150)}...`}
+        image={card.poster}
+        url={`https://cineverse-ai-gules.vercel.app/tv/${raw.id}`}
+        type="video.tv_show"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'TVSeries',
+          'name': card.title,
+          'image': card.poster,
+          'description': synopsis,
+          'genre': card.genre,
+        }}
+      />
       <div className="relative border-b border-white/5 overflow-hidden">
         {backdrop && (
           <>
