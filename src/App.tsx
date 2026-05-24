@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -57,6 +58,16 @@ function AppShell() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-gray-950 text-white">
+      <Helmet>
+        <title>CineVerse AI - Your Entertainment Universe</title>
+        <meta
+          name="description"
+          content="Discover movies, anime, TV shows, trailers, ratings and AI-powered entertainment recommendations."
+        />
+        <meta name="keywords" content="movies, anime, OTT, AI entertainment, CineVerse AI" />
+        <meta property="og:title" content="CineVerse AI" />
+        <meta property="og:description" content="AI powered entertainment platform" />
+      </Helmet>
       <AmbientBackdrop />
       {!isAuthPage && <Navbar />}
       <main className={`relative z-10 ${isAuthPage ? '' : 'pt-16 md:pt-20'}`}>

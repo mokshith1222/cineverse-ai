@@ -234,6 +234,8 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   build: {
+    target: 'es2018',
+    cssTarget: 'chrome61',
     rollupOptions: {
       output: {
         manualChunks: {
