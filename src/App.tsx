@@ -13,6 +13,7 @@ import { OTTTrackerProvider } from './contexts/OTTTrackerContext';
 import { LanguageProvider } from './contexts/LanguageContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import ErrorBoundary from './components/system/ErrorBoundary';
+import CookieConsent from './components/CookieConsent';
 
 const Home = lazy(() => import('./pages/Home'));
 const Movies = lazy(() => import('./pages/Movies'));
@@ -34,8 +35,6 @@ const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Terms = lazy(() => import('./pages/Terms'));
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
-const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 const Disclaimer = lazy(() => import('./pages/Disclaimer'));
 const EditorialPicks = lazy(() => import('./pages/EditorialPicks'));
 const WeeklyPicks = lazy(() => import('./pages/WeeklyPicks'));
@@ -89,8 +88,6 @@ function AppShell() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="/editorial-picks" element={<EditorialPicks />} />
                 <Route path="/weekly-picks" element={<WeeklyPicks />} />
                 <Route path="/disclaimer" element={<Disclaimer />} />
@@ -135,6 +132,7 @@ function AppShell() {
         </AnimatePresence>
       </main>
       {!isAuthPage && <Footer />}
+      <CookieConsent />
     </div>
   );
 }

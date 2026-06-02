@@ -61,15 +61,19 @@ export default function Privacy() {
           <section>
             <div className="flex items-center gap-3 mb-4 text-cyan-400">
               <Globe className="w-5 h-5" />
-              <h2 className="text-xl font-bold text-white">Cookies & Tracking</h2>
+              <h2 className="text-xl font-bold text-white">Cookies & Advertising (Google AdSense)</h2>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              We use cookies and similar technologies to enhance your browsing experience, remember your login session, support essential features, and analyze site performance. Cookies are small data files stored on your device. You can control cookie settings through your browser, though some features may be limited if cookies are disabled.
+              We use cookies and similar technologies to enhance your browsing experience, remember your login session, support essential features, and analyze site performance. Cookies are small data files stored on your device.
             </p>
-            <div className="bg-white/5 rounded-2xl p-5 border border-white/5 mt-5">
-              <p className="text-gray-500 text-xs leading-relaxed">
-                Advertising note: we may display ads via third-party partners (for example, Google AdSense). These partners may use cookies or similar technologies to measure performance and, where permitted, to personalize ads.
-              </p>
+            <div className="bg-white/5 rounded-2xl p-5 border border-white/5 mt-5 space-y-3">
+              <p className="text-gray-400 text-sm font-bold">Google AdSense and the DoubleClick DART Cookie</p>
+              <ul className="text-gray-500 text-xs leading-relaxed list-disc list-inside space-y-2">
+                <li>Google, as a third-party vendor, uses cookies to serve ads on our site.</li>
+                <li>Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet.</li>
+                <li>Users may opt-out of personalized advertising by visiting <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Google Ad Settings</a>.</li>
+                <li>Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">www.aboutads.info</a>.</li>
+              </ul>
             </div>
           </section>
 
