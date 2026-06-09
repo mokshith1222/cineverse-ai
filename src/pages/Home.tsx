@@ -23,6 +23,7 @@ import TrendingAnimeShowcase from '../components/TrendingAnimeShowcase';
 import TrendingTvShowcase from '../components/TrendingTvShowcase';
 import UpcomingEpisodesSection from '../components/UpcomingEpisodesSection';
 import MovieCard from '../components/MovieCard';
+import HomeSEOContent from '../components/HomeSEOContent';
 import AnimeCard from '../components/AnimeCard';
 import TvCard from '../components/TvCard';
 import VoiceSearchButton from '../components/VoiceSearchButton';
@@ -867,6 +868,8 @@ export default function Home() {
             </div>
           )}
         </section>
+        
+        <HomeSEOContent />
       </div>
     </div>
   );
