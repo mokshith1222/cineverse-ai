@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Play, Bookmark, Tv } from 'lucide-react';
 import { Anime } from '../types';
+import { getOptimizedImageUrl } from '../lib/imageOpt';
 
 interface Props {
   anime: Anime;
@@ -22,16 +23,13 @@ export default function AnimeCard({ anime }: Props) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <picture>
-        <source srcSet={`${anime.poster}?format=webp`} type="image/webp" />
-        <img
-          src={anime.poster}
-          alt={anime.title}
-          loading="lazy"
-          decoding="async"
-          className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-      </picture>
+      <img
+        src={getOptimizedImageUrl(anime.poster, 750)}
+        alt={anime.title}
+        loading="lazy"
+        decoding="async"
+        className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
 
       <Link
         to={detailHref}

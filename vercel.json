@@ -8,5 +8,14 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "images": {
+    "sizes": [320, 640, 750, 1080, 1440],
+    "domains": [
+      "m.media-amazon.com",
+      "cdn.myanimelist.net",
+      "static.tvmaze.com",
+      "placehold.co"
+    ]
+  }
 }

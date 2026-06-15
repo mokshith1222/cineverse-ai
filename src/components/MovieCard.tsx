@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Star, Clock, Play, Bookmark } from 'lucide-react';
 import { Movie } from '../types';
 import { OMDB_FALLBACK_POSTER } from '../lib/omdb';
+import { getOptimizedImageUrl } from '../lib/imageOpt';
 
 interface Props {
   movie: Movie;
@@ -26,22 +27,19 @@ export default function MovieCard({ movie, featured = false }: Props) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <picture>
-        <source srcSet={`${posterSrc}?format=webp`} type="image/webp" />
-        <img
-          src={posterSrc}
-          alt={movie.title}
-          loading="lazy"
-          decoding="async"
-          onError={() => {
-            if (posterSrc !== OMDB_FALLBACK_POSTER) {
-              console.warn('[MovieCard] Poster failed, using fallback', { title: movie.title, poster: posterSrc });
-              setPosterSrc(OMDB_FALLBACK_POSTER);
-            }
-          }}
-          className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-      </picture>
+      <img
+        src={getOptimizedImageUrl(posterSrc, 750)}
+        alt={movie.title}
+        loading="lazy"
+        decoding="async"
+        onError={() => {
+          if (posterSrc !== OMDB_FALLBACK_POSTER) {
+            console.warn('[MovieCard] Poster failed, using fallback', { title: movie.title, poster: posterSrc });
+            setPosterSrc(OMDB_FALLBACK_POSTER);
+          }
+        }}
+        className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
 
       {detailHref && (
         <Link

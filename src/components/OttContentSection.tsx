@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AlertCircle, BookMarked, Clock, Star } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { WatchmodeTitleDetails, WatchmodeSourceListItem } from '../lib/watchmode';
+import { getOptimizedImageUrl } from '../lib/imageOpt';
 
 function titlePoster(title: WatchmodeTitleDetails): string {
   return title.posterMedium || title.posterLarge || title.poster || 'https://placehold.co/400x600/111827/6b7280/png?text=No+Poster';
@@ -84,10 +85,7 @@ export default function OttContentSection({
                 to={href}
                 className="relative group aspect-[2/3] rounded-xl overflow-hidden bg-gray-900 border border-white/5 transition-all duration-300 hover:scale-105 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-blue-500/10"
               >
-                <picture>
-                  <source srcSet={`${titlePoster(title)}?format=webp`} type="image/webp" />
-                  <img src={titlePoster(title)} alt={title.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                </picture>
+                <img src={getOptimizedImageUrl(titlePoster(title), 750)} alt={title.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/45 to-transparent opacity-90" />
                 <div className="absolute top-2 left-2 right-2 flex flex-wrap gap-1">
                   {badges.map(source => (

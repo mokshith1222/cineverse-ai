@@ -370,6 +370,24 @@ function HomeSearch() {
 
 // OttContentSection was moved to components/OttContentSection.tsx
 
+function ShowcaseFallback() {
+  return (
+    <section className="space-y-6">
+      <div className="flex items-end justify-between mb-6">
+        <div className="space-y-2">
+           <div className="h-8 w-48 bg-gray-900 rounded animate-pulse" />
+           <div className="h-4 w-64 bg-gray-900/50 rounded animate-pulse hidden sm:block" />
+        </div>
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div key={i} className="aspect-[2/3] rounded-xl bg-gray-900 border border-white/5 animate-pulse" />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [cms, setCms] = useState<CmsHomePayload>(fallbackCmsHome);
   const [mood, setMood] = useState<DiscoveryMood>('epic');
@@ -649,7 +667,7 @@ export default function Home() {
 
         <AdSlot slot={homepageAd} />
 
-        <Suspense fallback={<div className="h-64 animate-pulse bg-gray-900 rounded-xl" />}>
+        <Suspense fallback={<ShowcaseFallback />}>
           <TrendingMoviesShowcase
             movies={movies}
             loading={moviesLoading}
@@ -658,7 +676,7 @@ export default function Home() {
           />
         </Suspense>
 
-        <Suspense fallback={<div className="h-64 animate-pulse bg-gray-900 rounded-xl" />}>
+        <Suspense fallback={<ShowcaseFallback />}>
           <TrendingAnimeShowcase
             anime={popularAnime}
             loading={animeLoading}
@@ -666,11 +684,11 @@ export default function Home() {
           />
         </Suspense>
 
-        <Suspense fallback={<div className="h-64 animate-pulse bg-gray-900 rounded-xl" />}>
+        <Suspense fallback={<ShowcaseFallback />}>
           <TrendingTvShowcase shows={tvTrendingShows} loading={tvLoading} error={tvErr} />
         </Suspense>
 
-        <Suspense fallback={<div className="h-64 animate-pulse bg-gray-900 rounded-xl" />}>
+        <Suspense fallback={<ShowcaseFallback />}>
           <OttContentSection
             titles={ottTitles}
             region={ottRegion}

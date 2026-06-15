@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bookmark, Clock, Play, Star, Tv } from 'lucide-react';
 import type { TvShow } from '../types';
+import { getOptimizedImageUrl } from '../lib/imageOpt';
 
 interface Props {
   show: TvShow;
@@ -25,16 +26,13 @@ export default function TvCard({ show }: Props) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <picture>
-        <source srcSet={`${show.poster}?format=webp`} type="image/webp" />
-        <img
-          src={show.poster}
-          alt={show.title}
-          loading="lazy"
-          decoding="async"
-          className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-      </picture>
+      <img
+        src={getOptimizedImageUrl(show.poster, 750)}
+        alt={show.title}
+        loading="lazy"
+        decoding="async"
+        className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
 
       <Link
         to={detailHref}

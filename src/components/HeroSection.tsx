@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Play, Info, ChevronLeft, ChevronRight, Star, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { Movie } from '../types';
+import { getOptimizedImageUrl } from '../lib/imageOpt';
 
 export interface FeaturedHeroItem {
   id: string | number;
@@ -95,16 +96,13 @@ export default function HeroSection({ movies = [], items, loading = false }: Pro
           key={String(m.id)}
           className={`absolute inset-0 transition-opacity duration-1000 ${i === current ? 'opacity-100' : 'opacity-0'}`}
         >
-          <picture>
-            <source srcSet={`${m.backdrop}?format=webp`} type="image/webp" />
-            <img 
-              src={m.backdrop} 
-              alt={m.title} 
-              fetchPriority={i === 0 ? "high" : "auto"}
-              loading={i === 0 ? "eager" : "lazy"}
-              className="w-full h-full object-cover" 
-            />
-          </picture>
+          <img 
+            src={getOptimizedImageUrl(m.backdrop, 1440)} 
+            alt={m.title} 
+            fetchPriority={i === 0 ? "high" : "auto"}
+            loading={i === 0 ? "eager" : "lazy"}
+            className="w-full h-full object-cover" 
+          />
         </div>
       ))}
 
