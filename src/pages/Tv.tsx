@@ -157,7 +157,7 @@ export default function Tv() {
 
           <div className="flex flex-col sm:flex-row gap-3 mt-4">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 value={query}
                 onChange={e => setQuery(e.target.value)}
@@ -197,7 +197,7 @@ export default function Tv() {
                     <SlidersHorizontal className="w-5 h-5 text-emerald-400" />
                     <h2 className="text-xl font-black text-white">TV Discovery Tips</h2>
                   </div>
-                  <p className="text-sm text-gray-500">Use TVMaze-powered schedules and search without fighting the interface.</p>
+                  <p className="text-sm text-gray-400">Use TVMaze-powered schedules and search without fighting the interface.</p>
                 </div>
                 <button
                   type="button"
@@ -232,7 +232,7 @@ export default function Tv() {
                     <div key={item.title} className="rounded-xl border border-white/5 bg-gray-900/70 p-4">
                       <Icon className="w-5 h-5 text-emerald-400 mb-3" />
                       <h3 className="text-sm font-black text-white mb-1">{item.title}</h3>
-                      <p className="text-xs leading-relaxed text-gray-500">{item.body}</p>
+                      <p className="text-xs leading-relaxed text-gray-400">{item.body}</p>
                     </div>
                   );
                 })}
@@ -250,7 +250,7 @@ export default function Tv() {
         {searching ? (
           <section>
             <div className="mb-6">
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-400 text-sm">
                 {searchLoading ? (
                   'Searching TVMaze…'
                 ) : (
@@ -278,7 +278,7 @@ export default function Tv() {
               </div>
             ) : (
               !searchErr && (
-                <div className="text-center py-16 rounded-2xl border border-white/5 bg-gray-900/40 text-gray-500 text-sm">
+                <div className="text-center py-16 rounded-2xl border border-white/5 bg-gray-900/40 text-gray-400 text-sm">
                   No TV shows matched that query.
                 </div>
               )
@@ -325,7 +325,7 @@ export default function Tv() {
                   ))}
                 </div>
               ) : (
-                <p className="text-gray-500 text-sm">Catalogue snapshot unavailable.</p>
+                <p className="text-gray-400 text-sm">Catalogue snapshot unavailable.</p>
               )}
             </section>
 

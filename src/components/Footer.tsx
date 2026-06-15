@@ -35,7 +35,7 @@ export default function Footer() {
                 <span className="text-cyan-300 text-xs font-medium ml-1">AI</span>
               </span>
             </Link>
-            <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
+            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               {footer.description}
             </p>
             <div className="flex gap-3 mt-4">
@@ -62,7 +62,7 @@ export default function Footer() {
                 { to: '/ott', label: 'OTT Tracker' },
               ].map(({ to, label }) => (
                 <li key={to}>
-                  <Link to={to} className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
+                  <Link to={to} className="text-gray-400 hover:text-gray-300 text-sm transition-colors">
                     {label}
                   </Link>
                 </li>
@@ -78,7 +78,7 @@ export default function Footer() {
                 { to: '/contact', label: 'Contact Us' },
               ].map(({ to, label }) => (
                 <li key={to}>
-                  <Link to={to} className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
+                  <Link to={to} className="text-gray-400 hover:text-gray-300 text-sm transition-colors">
                     {label}
                   </Link>
                 </li>
@@ -95,7 +95,7 @@ export default function Footer() {
                 { to: '/disclaimer', label: 'Disclaimer' },
               ].map(({ to, label }) => (
                 <li key={to}>
-                  <Link to={to} className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
+                  <Link to={to} className="text-gray-400 hover:text-gray-300 text-sm transition-colors">
                     {label}
                   </Link>
                 </li>
@@ -106,11 +106,11 @@ export default function Footer() {
 
         <div className="border-t border-white/5 mt-8 pt-6 flex flex-col gap-3">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-            <p className="text-gray-600 text-xs">© 2026 CineVerse AI. All rights reserved.</p>
-            <p className="text-gray-700 text-xs">Built for entertainment enthusiasts</p>
+            <p className="text-gray-400 text-xs">© 2026 CineVerse AI. All rights reserved.</p>
+            <p className="text-gray-300 text-xs">Built for entertainment enthusiasts</p>
           </div>
-          <p className="text-gray-700 text-xs text-center sm:text-left">{footer.attribution}</p>
-          <p className="text-gray-700 text-xs text-center sm:text-left">
+          <p className="text-gray-300 text-xs text-center sm:text-left">{footer.attribution}</p>
+          <p className="text-gray-300 text-xs text-center sm:text-left">
             Cookie notice: CineVerse may use cookies for essential functionality, analytics, and (where enabled) advertising. Data is provided by third-party APIs and may be inaccurate. CineVerse does not host or stream media. See{' '}
             <Link to="/privacy" className="text-cyan-400 hover:underline">Privacy</Link>
             {' '}and{' '}

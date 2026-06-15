@@ -45,7 +45,7 @@ export default function UpcomingEpisodesSection({
           ))}
         </div>
       ) : upcoming.length === 0 ? (
-        <div className="rounded-xl border border-white/10 bg-gray-900/40 px-6 py-10 text-center text-gray-500 text-sm">
+        <div className="rounded-xl border border-white/10 bg-gray-900/40 px-6 py-10 text-center text-gray-400 text-sm">
           No upcoming episodes with timestamps found in the loaded window.
         </div>
       ) : (
@@ -78,9 +78,9 @@ export default function UpcomingEpisodesSection({
                 <div className="min-w-0 flex-1">
                   <p className="text-emerald-400 text-[11px] font-semibold uppercase tracking-wide">{when}</p>
                   <p className="text-white font-semibold text-sm mt-1 line-clamp-2">{row.show.title}</p>
-                  <p className="text-gray-500 text-xs mt-1 line-clamp-2">
+                  <p className="text-gray-400 text-xs mt-1 line-clamp-2">
                     {row.episode.name}
-                    <span className="text-gray-600 mx-1">·</span>
+                    <span className="text-gray-400 mx-1">·</span>
                     {row.source === 'broadcast' ? 'TV' : 'Web'}
                   </p>
                 </div>

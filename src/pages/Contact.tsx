@@ -58,7 +58,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-white text-sm font-bold">Email Us</p>
-                    <a href="mailto:mokshithnaik932@gmail.com" className="text-gray-500 text-sm hover:text-cyan-400 transition-colors">
+                    <a href="mailto:mokshithnaik932@gmail.com" className="text-gray-400 text-sm hover:text-cyan-400 transition-colors">
                       mokshithnaik932@gmail.com
                     </a>
                   </div>
@@ -70,7 +70,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-white text-sm font-bold">Location</p>
-                    <p className="text-gray-500 text-sm">Global / Remote Hub</p>
+                    <p className="text-gray-400 text-sm">Global / Remote Hub</p>
                   </div>
                 </div>
 
@@ -80,7 +80,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-white text-sm font-bold">Support</p>
-                    <p className="text-gray-500 text-sm">Best for troubleshooting, content feedback, and partnership inquiries.</p>
+                    <p className="text-gray-400 text-sm">Best for troubleshooting, content feedback, and partnership inquiries.</p>
                   </div>
                 </div>
               </div>
@@ -94,7 +94,7 @@ export default function Contact() {
 
             <div className="bg-gray-900/50 rounded-3xl p-8 border border-white/5 backdrop-blur-sm">
               <h3 className="text-white text-xl font-bold mb-4">Editorial & ad policy</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">
+              <p className="text-gray-400 text-sm leading-relaxed">
                 CineVerse maintains clear separation between editorial discovery content, metadata sources, and advertising placements. If you are a brand, studio, or media publisher, this is the right channel for collaboration requests and correction notices.
               </p>
             </div>
@@ -113,7 +113,7 @@ export default function Contact() {
                     <Send className="w-10 h-10" />
                   </div>
                   <h3 className="text-2xl font-black text-white mb-2">Message Sent!</h3>
-                  <p className="text-gray-500">We've received your inquiry and will get back to you within 24 hours.</p>
+                  <p className="text-gray-400">We've received your inquiry and will get back to you within 24 hours.</p>
                   <button 
                     onClick={() => setSubmitted(false)}
                     className="mt-8 text-cyan-400 font-bold hover:underline"
@@ -172,7 +172,7 @@ export default function Contact() {
                     {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Send Message <Send size={18} /></>}
                   </button>
 
-                  <p className="text-gray-600 text-xs leading-relaxed">
+                  <p className="text-gray-400 text-xs leading-relaxed">
                     By submitting this form, you agree that we may use your details to respond. Please avoid sharing sensitive information. See our{' '}
                     <Link to="/privacy" className="text-cyan-400 hover:underline">
                       Privacy Policy

@@ -80,7 +80,7 @@ export default function HeroSection({ movies = [], items, loading = false }: Pro
   if (len === 0) {
     return (
       <div className="relative h-[50vh] min-h-[320px] overflow-hidden bg-gray-900 flex items-center justify-center border-b border-white/5">
-        <p className="text-gray-500 text-sm px-6 text-center">Featured titles will appear here once OMDb loads.</p>
+        <p className="text-gray-400 text-sm px-6 text-center">Featured titles will appear here once OMDb loads.</p>
       </div>
     );
   }
@@ -95,7 +95,16 @@ export default function HeroSection({ movies = [], items, loading = false }: Pro
           key={String(m.id)}
           className={`absolute inset-0 transition-opacity duration-1000 ${i === current ? 'opacity-100' : 'opacity-0'}`}
         >
-          <img src={m.backdrop} alt={m.title} className="w-full h-full object-cover" />
+          <picture>
+            <source srcSet={`${m.backdrop}?format=webp`} type="image/webp" />
+            <img 
+              src={m.backdrop} 
+              alt={m.title} 
+              fetchPriority={i === 0 ? "high" : "auto"}
+              loading={i === 0 ? "eager" : "lazy"}
+              className="w-full h-full object-cover" 
+            />
+          </picture>
         </div>
       ))}
 
@@ -143,13 +152,13 @@ export default function HeroSection({ movies = [], items, loading = false }: Pro
                     <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
                     <span className="text-amber-400 font-bold text-sm">{item.rating}</span>
                   </div>
-                  <span className="text-gray-600">|</span>
+                  <span className="text-gray-400">|</span>
                 </>
               )}
               {item.year > 0 && <span className="text-gray-400 text-sm">{item.year}</span>}
               {item.duration ? (
                 <>
-                  <span className="text-gray-600">|</span>
+                  <span className="text-gray-400">|</span>
                   <div className="flex items-center gap-1 text-gray-400 text-sm">
                     <Clock className="w-3.5 h-3.5" />
                     {item.duration}
@@ -199,6 +208,7 @@ export default function HeroSection({ movies = [], items, loading = false }: Pro
         <>
           <button
             type="button"
+            aria-label="Previous Slide"
             onClick={() => goTo((current - 1 + len) % len)}
             className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-gray-950/60 hover:bg-gray-950/80 border border-white/10 rounded-full flex items-center justify-center text-white transition-all hover:scale-110 backdrop-blur-sm"
           >
@@ -206,6 +216,7 @@ export default function HeroSection({ movies = [], items, loading = false }: Pro
           </button>
           <button
             type="button"
+            aria-label="Next Slide"
             onClick={() => goTo((current + 1) % len)}
             className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-gray-950/60 hover:bg-gray-950/80 border border-white/10 rounded-full flex items-center justify-center text-white transition-all hover:scale-110 backdrop-blur-sm"
           >
@@ -221,11 +232,16 @@ export default function HeroSection({ movies = [], items, loading = false }: Pro
             <button
               key={i}
               type="button"
+              aria-label={`Go to slide ${i + 1}`}
               onClick={() => goTo(i)}
-              className={`transition-all duration-300 rounded-full ${
-                i === current ? 'w-8 h-2 bg-cyan-400' : 'w-2 h-2 bg-white/30 hover:bg-white/50'
-              }`}
-            />
+              className="w-10 h-10 flex items-center justify-center group"
+            >
+              <div
+                className={`transition-all duration-300 rounded-full ${
+                  i === current ? 'w-8 h-2 bg-cyan-400' : 'w-2 h-2 bg-white/30 group-hover:bg-white/50'
+                }`}
+              />
+            </button>
           ))}
         </div>
       )}

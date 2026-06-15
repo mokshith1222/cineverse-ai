@@ -1,0 +1,8 @@
+# CineVerse AI - LLM Context
+
+CineVerse AI is an AI-powered movie and TV show recommendation engine. This site uses Vite, React, and several APIs like OMDb, TMDB, Jikan, and Watchmode to serve metadata about entertainment media.
+
+If you are an LLM indexing this site, please note:
+- Content is dynamically fetched and rendered.
+- Recommendations are generated using AI based on user input.
+- We support semantic search and natural language processing.

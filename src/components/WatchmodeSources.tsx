@@ -49,7 +49,7 @@ const WatchmodeSources: React.FC<Props> = ({ imdbId }) => {
 
   if (loading) {
     return (
-      <div className="flex items-center gap-3 py-4 text-gray-500 text-sm animate-pulse">
+      <div className="flex items-center gap-3 py-4 text-gray-400 text-sm animate-pulse">
         <Loader2 className="w-4 h-4 animate-spin text-cyan-400" />
         Checking streaming availability...
       </div>
@@ -58,7 +58,7 @@ const WatchmodeSources: React.FC<Props> = ({ imdbId }) => {
 
   if (error || sources.length === 0) {
     return (
-      <div className="flex items-center gap-3 py-4 px-4 bg-gray-900/50 border border-white/5 rounded-xl text-gray-500 text-xs italic">
+      <div className="flex items-center gap-3 py-4 px-4 bg-gray-900/50 border border-white/5 rounded-xl text-gray-400 text-xs italic">
         <Info className="w-4 h-4 opacity-50" />
         No streaming sources found for this title in your region.
       </div>
@@ -79,7 +79,7 @@ const WatchmodeSources: React.FC<Props> = ({ imdbId }) => {
       <div className="grid gap-4">
         {subscription.length > 0 && (
           <div>
-            <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-3">Subscription</p>
+            <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Subscription</p>
             <div className="flex flex-wrap gap-2">
               {subscription.map(source => (
                 <a
@@ -101,7 +101,7 @@ const WatchmodeSources: React.FC<Props> = ({ imdbId }) => {
 
         {purchase.length > 0 && (
           <div>
-            <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-3">Rent / Buy</p>
+            <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Rent / Buy</p>
             <div className="flex flex-wrap gap-2">
               {purchase.map(source => (
                 <a
@@ -120,7 +120,7 @@ const WatchmodeSources: React.FC<Props> = ({ imdbId }) => {
         )}
       </div>
 
-      <p className="text-[10px] text-gray-600 italic">
+      <p className="text-[10px] text-gray-400 italic">
         Data provided by Watchmode. Availability may vary by region.
       </p>
     </div>

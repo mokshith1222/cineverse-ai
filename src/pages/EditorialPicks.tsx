@@ -58,7 +58,7 @@ export default function EditorialPicks() {
                 <div className="mt-2 text-sm text-gray-300 line-clamp-3">{pick.editorNote}</div>
                 <div className="mt-3 flex items-center justify-between gap-3">
                   <span className="inline-block bg-amber-400 text-gray-950 px-2 py-1 rounded font-semibold text-sm">{pick.rating}</span>
-                  <span className="text-xs text-gray-500 uppercase tracking-[0.16em]">Rotates daily</span>
+                  <span className="text-xs text-gray-400 uppercase tracking-[0.16em]">Rotates daily</span>
                 </div>
               </div>
             </article>

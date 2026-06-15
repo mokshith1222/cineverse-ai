@@ -43,7 +43,7 @@ export default function SectionHeader({ title, subtitle, viewAllTo, onViewAll, a
             {title}
           </h2>
         </div>
-        {subtitle && <p className="text-gray-500 text-sm ml-4">{subtitle}</p>}
+        {subtitle && <p className="text-gray-400 text-sm ml-4">{subtitle}</p>}
       </div>
       {(viewAllTo || onViewAll) && (
         onViewAll ? (

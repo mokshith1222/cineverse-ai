@@ -213,11 +213,11 @@ export default function Notifications() {
           <div className="flex flex-wrap gap-3 mt-6">
             <div className="rounded-xl border border-white/5 bg-gray-900/60 px-4 py-3">
               <p className="text-2xl font-black text-white">{alerts.length}</p>
-              <p className="text-xs text-gray-500">Live signals</p>
+              <p className="text-xs text-gray-400">Live signals</p>
             </div>
             <div className="rounded-xl border border-white/5 bg-gray-900/60 px-4 py-3">
               <p className="text-2xl font-black text-cyan-400">{unread}</p>
-              <p className="text-xs text-gray-500">Unread</p>
+              <p className="text-xs text-gray-400">Unread</p>
             </div>
             <button
               type="button"
@@ -238,7 +238,7 @@ export default function Notifications() {
             </button>
           </div>
           {lastUpdated && (
-            <p className="mt-3 text-xs text-gray-500">Last refreshed at {lastUpdated}</p>
+            <p className="mt-3 text-xs text-gray-400">Last refreshed at {lastUpdated}</p>
           )}
         </div>
       </div>
@@ -269,7 +269,7 @@ export default function Notifications() {
                         {unreadAlert ? <span className="rounded-md bg-cyan-500 px-2 py-0.5 text-[10px] font-black uppercase text-gray-950">New</span> : null}
                       </div>
                       <p className="text-sm text-gray-400">{alert.message}</p>
-                      <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-gray-500">
+                      <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-gray-400">
                         <span className="flex items-center gap-1"><Sparkles className="w-3 h-3" /> {alert.source}</span>
                         <span className="flex items-center gap-1"><CalendarDays className="w-3 h-3" /> {alert.createdAt}</span>
                       </div>
@@ -288,7 +288,7 @@ export default function Notifications() {
             })}
           </div>
         ) : (
-          <div className="rounded-2xl border border-white/5 bg-gray-900/40 py-20 text-center text-gray-500">
+          <div className="rounded-2xl border border-white/5 bg-gray-900/40 py-20 text-center text-gray-400">
             No notifications yet.
           </div>
         )}

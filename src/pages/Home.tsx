@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState, Suspense } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   AlertCircle,
@@ -18,15 +18,17 @@ import TrailerCard from '../components/TrailerCard';
 import SectionHeader from '../components/SectionHeader';
 import Seo from '../components/Seo';
 import EditorialCollectionCard from '../components/EditorialCollectionCard';
-import TrendingMoviesShowcase from '../components/TrendingMoviesShowcase';
-import TrendingAnimeShowcase from '../components/TrendingAnimeShowcase';
-import TrendingTvShowcase from '../components/TrendingTvShowcase';
 import UpcomingEpisodesSection from '../components/UpcomingEpisodesSection';
 import MovieCard from '../components/MovieCard';
 import HomeSEOContent from '../components/HomeSEOContent';
 import AnimeCard from '../components/AnimeCard';
 import TvCard from '../components/TvCard';
 import VoiceSearchButton from '../components/VoiceSearchButton';
+
+const TrendingMoviesShowcase = React.lazy(() => import('../components/TrendingMoviesShowcase'));
+const TrendingAnimeShowcase = React.lazy(() => import('../components/TrendingAnimeShowcase'));
+const TrendingTvShowcase = React.lazy(() => import('../components/TrendingTvShowcase'));
+const OttContentSection = React.lazy(() => import('../components/OttContentSection'));
 import {
   JikanApiError,
   fetchTopAnimePopular,
@@ -304,7 +306,7 @@ function HomeSearch() {
         className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-5"
       >
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
             value={query}
             onChange={e => setQuery(e.target.value)}
@@ -321,7 +323,7 @@ function HomeSearch() {
           <button
             type="submit"
             disabled={query.trim().length < 2}
-            className="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 disabled:bg-gray-800 disabled:text-gray-500 text-gray-950 text-sm font-black transition-colors"
+            className="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 disabled:bg-gray-800 disabled:text-gray-400 text-gray-950 text-sm font-black transition-colors"
           >
             Search
           </button>
@@ -343,7 +345,7 @@ function HomeSearch() {
                 <img src={item.poster} alt={`${item.title} poster`} loading="lazy" className="w-10 h-14 rounded-lg object-cover bg-gray-900" />
                 <div className="min-w-0">
                   <p className="text-sm font-bold text-white truncate">{item.title}</p>
-                  <p className="text-xs text-gray-500">{item.subtitle}</p>
+                  <p className="text-xs text-gray-400">{item.subtitle}</p>
                 </div>
                 <span className="ml-auto text-[10px] uppercase font-black text-cyan-300 bg-cyan-400/10 border border-cyan-400/20 px-2 py-1 rounded-lg">
                   {item.kind}
@@ -366,97 +368,7 @@ function HomeSearch() {
   );
 }
 
-function OttContentSection({
-  titles,
-  region,
-  sources,
-  loading,
-  error,
-}: {
-  titles: WatchmodeTitleDetails[];
-  region: string;
-  sources: WatchmodeSourceListItem[];
-  loading: boolean;
-  error: string | null;
-}) {
-  const sourcesById = useMemo(() => new Map(sources.map(s => [s.id, s])), [sources]);
-
-  return (
-    <section>
-      <SectionHeader
-        title="Trending OTT Content"
-        subtitle={`Popular streaming titles from Watchmode${region ? ` (${region})` : ''}`}
-        viewAllTo="/ott"
-        accent="blue"
-        icon={<BookMarked className="w-5 h-5" />}
-      />
-
-      {error && (
-        <div className="mb-4 flex items-center gap-2 text-amber-300 text-sm">
-          <AlertCircle className="w-4 h-4" />
-          {error}
-        </div>
-      )}
-
-      {loading ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="aspect-[2/3] rounded-xl bg-gray-900 border border-white/5 animate-pulse" />
-          ))}
-        </div>
-      ) : titles.length > 0 ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-          {titles.slice(0, 6).map(title => {
-            const badges = providerBadges(title, region, sourcesById);
-            const href = title.type === 'movie' && title.imdb_id ? `/movies/${title.imdb_id}` : '/ott';
-            const rating = title.user_rating ? Number(title.user_rating.toFixed(1)) : null;
-            return (
-              <Link
-                key={title.id}
-                to={href}
-                className="relative group aspect-[2/3] rounded-xl overflow-hidden bg-gray-900 border border-white/5 transition-all duration-300 hover:scale-105 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-blue-500/10"
-              >
-                <img src={titlePoster(title)} alt={title.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/45 to-transparent opacity-90" />
-                <div className="absolute top-2 left-2 right-2 flex flex-wrap gap-1">
-                  {badges.map(source => (
-                    <span key={source.id} className="flex items-center gap-1 rounded-md bg-black/65 border border-white/10 px-1.5 py-1 text-[9px] font-black uppercase text-white backdrop-blur-md">
-                      {source.logo_100px ? <img src={source.logo_100px} alt={`${source.name} logo`} loading="lazy" className="w-3.5 h-3.5 rounded-sm" /> : null}
-                      <span className="truncate max-w-[5rem]">{source.name}</span>
-                    </span>
-                  ))}
-                </div>
-                {rating !== null && (
-                  <div className="absolute top-2 right-2 flex items-center gap-1 bg-gray-950/80 backdrop-blur-sm px-2 py-1 rounded-lg border border-white/10">
-                    <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
-                    <span className="text-white text-xs font-semibold">{rating}</span>
-                  </div>
-                )}
-                <div className="absolute bottom-0 left-0 right-0 p-3">
-                  <h3 className="text-white text-sm font-semibold leading-tight line-clamp-2">{title.title}</h3>
-                  <div className="mt-1 flex items-center gap-2 text-xs text-gray-400">
-                    {title.year ? <span>{title.year}</span> : null}
-                    <span className="uppercase text-blue-300">{title.type === 'movie' ? 'Movie' : 'TV'}</span>
-                    {title.runtime_minutes ? (
-                      <>
-                        <Clock className="w-3 h-3" />
-                        <span>{formatRuntime(title.runtime_minutes)}</span>
-                      </>
-                    ) : null}
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="rounded-xl border border-white/5 bg-gray-900/40 p-6 text-sm text-gray-500">
-          No Watchmode titles are available right now.
-        </div>
-      )}
-    </section>
-  );
-}
+// OttContentSection was moved to components/OttContentSection.tsx
 
 export default function Home() {
   const [cms, setCms] = useState<CmsHomePayload>(fallbackCmsHome);
@@ -713,7 +625,7 @@ export default function Home() {
                   <Icon className="w-4 h-4 text-cyan-400" />
                   <div>
                     <div className="text-2xl font-black text-cyan-400">{stat.value}</div>
-                    <div className="text-gray-500 text-xs">{stat.label}</div>
+                    <div className="text-gray-400 text-xs">{stat.label}</div>
                   </div>
                 </div>
               );
@@ -737,28 +649,36 @@ export default function Home() {
 
         <AdSlot slot={homepageAd} />
 
-        <TrendingMoviesShowcase
-          movies={movies}
-          loading={moviesLoading}
-          error={moviesErr}
-          subtitle="Fresh OMDb results refreshed automatically"
-        />
+        <Suspense fallback={<div className="h-64 animate-pulse bg-gray-900 rounded-xl" />}>
+          <TrendingMoviesShowcase
+            movies={movies}
+            loading={moviesLoading}
+            error={moviesErr}
+            subtitle="Fresh OMDb results refreshed automatically"
+          />
+        </Suspense>
 
-        <TrendingAnimeShowcase
-          anime={popularAnime}
-          loading={animeLoading}
-          error={animeErr}
-        />
+        <Suspense fallback={<div className="h-64 animate-pulse bg-gray-900 rounded-xl" />}>
+          <TrendingAnimeShowcase
+            anime={popularAnime}
+            loading={animeLoading}
+            error={animeErr}
+          />
+        </Suspense>
 
-        <TrendingTvShowcase shows={tvTrendingShows} loading={tvLoading} error={tvErr} />
+        <Suspense fallback={<div className="h-64 animate-pulse bg-gray-900 rounded-xl" />}>
+          <TrendingTvShowcase shows={tvTrendingShows} loading={tvLoading} error={tvErr} />
+        </Suspense>
 
-        <OttContentSection
-          titles={ottTitles}
-          region={ottRegion}
-          sources={ottSources}
-          loading={ottLoading}
-          error={ottErr}
-        />
+        <Suspense fallback={<div className="h-64 animate-pulse bg-gray-900 rounded-xl" />}>
+          <OttContentSection
+            titles={ottTitles}
+            region={ottRegion}
+            sources={ottSources}
+            loading={ottLoading}
+            error={ottErr}
+          />
+        </Suspense>
 
         {isFeatureEnabled('aiRecommendations') && (
           <section>
@@ -777,7 +697,7 @@ export default function Home() {
                   className={`rounded-xl border px-4 py-2 text-xs font-black uppercase tracking-widest transition-all ${
                     mood === option
                       ? 'border-emerald-300 bg-emerald-400 text-gray-950'
-                      : 'border-white/10 bg-gray-900/60 text-gray-500 hover:border-emerald-300/40 hover:text-white'
+                      : 'border-white/10 bg-gray-900/60 text-gray-400 hover:border-emerald-300/40 hover:text-white'
                   }`}
                 >
                   {option}
@@ -795,7 +715,7 @@ export default function Home() {
                   <div className="min-w-0">
                     <span className="text-[10px] font-black uppercase tracking-widest text-emerald-300">{item.type}</span>
                     <h3 className="mt-1 truncate font-black text-white group-hover:text-emerald-100">{item.title}</h3>
-                    <p className="mt-1 line-clamp-2 text-xs leading-5 text-gray-500">{item.reason}</p>
+                    <p className="mt-1 line-clamp-2 text-xs leading-5 text-gray-400">{item.reason}</p>
                   </div>
                 </Link>
               ))}
@@ -863,7 +783,7 @@ export default function Home() {
               ))}
             </div>
           ) : (
-            <div className="rounded-xl border border-white/5 bg-gray-900/40 p-6 text-sm text-gray-500">
+            <div className="rounded-xl border border-white/5 bg-gray-900/40 p-6 text-sm text-gray-400">
               Trailer lookups will appear here when the YouTube API key is available.
             </div>
           )}

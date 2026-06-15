@@ -33,7 +33,7 @@ export default function TvScheduleSection({
           ))}
         </div>
       ) : rows.length === 0 ? (
-        <div className="rounded-xl border border-white/10 bg-gray-900/40 px-6 py-12 text-center text-gray-500 text-sm">
+        <div className="rounded-xl border border-white/10 bg-gray-900/40 px-6 py-12 text-center text-gray-400 text-sm">
           No episodes scheduled for this day in TVMaze’s feed.
         </div>
       ) : (
@@ -61,10 +61,10 @@ export default function TvScheduleSection({
                   <p className="text-gray-400 text-xs sm:text-sm mt-1 line-clamp-2">
                     {row.episode.season ? `S${row.episode.season}` : 'S?'}{' '}
                     {row.episode.number != null ? `E${row.episode.number}` : ''}
-                    <span className="text-gray-600 mx-1">·</span>
+                    <span className="text-gray-400 mx-1">·</span>
                     {row.episode.name}
                   </p>
-                  <div className="flex flex-wrap items-center gap-2 mt-2 text-[11px] sm:text-xs text-gray-500">
+                  <div className="flex flex-wrap items-center gap-2 mt-2 text-[11px] sm:text-xs text-gray-400">
                     <span
                       className={`px-2 py-0.5 rounded-md border ${
                         row.source === 'broadcast'

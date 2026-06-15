@@ -117,7 +117,7 @@ export default function SearchResults() {
           />
 
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 mt-3">
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-400">
               {loading ? 'Searching live APIs...' : query.length >= 2 ? `${total} results found for parsed query "${intent.query}"` : 'Try: "Show me dark thriller anime".'}
             </div>
             <VoiceSearchButton
@@ -136,13 +136,13 @@ export default function SearchResults() {
         )}
 
         {query.length < 2 ? (
-          <div className="text-center py-16 rounded-2xl border border-white/5 bg-gray-900/40 text-gray-500 text-sm">
+          <div className="text-center py-16 rounded-2xl border border-white/5 bg-gray-900/40 text-gray-400 text-sm">
             Enter at least 2 characters to start searching.
           </div>
         ) : null}
 
         {query.length >= 2 && !loading && total === 0 && !error ? (
-          <div className="text-center py-16 rounded-2xl border border-white/5 bg-gray-900/40 text-gray-500 text-sm">
+          <div className="text-center py-16 rounded-2xl border border-white/5 bg-gray-900/40 text-gray-400 text-sm">
             No matching titles found.
           </div>
         ) : null}
@@ -181,7 +181,7 @@ export default function SearchResults() {
         )}
 
         {query.length >= 2 && total > 0 && (
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-gray-400">
             Need deeper filtering? Browse full catalogues in{' '}
             <Link to="/movies" className="text-cyan-400 hover:text-cyan-300">Movies</Link>,{' '}
             <Link to="/anime" className="text-orange-400 hover:text-orange-300">Anime</Link>, and{' '}

@@ -97,7 +97,7 @@ export default function TvEpisodes() {
           <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
             {title || 'Episode guide'}
           </h1>
-          <p className="text-gray-500 text-sm mt-2">
+          <p className="text-gray-400 text-sm mt-2">
             Episode metadata from TVMaze — grouped by season.
           </p>
         </div>
@@ -116,7 +116,7 @@ export default function TvEpisodes() {
         )}
 
         {!loading && !error && bySeason.length === 0 && (
-          <p className="text-gray-500 text-sm text-center py-12">No episodes listed for this show.</p>
+          <p className="text-gray-400 text-sm text-center py-12">No episodes listed for this show.</p>
         )}
 
         {!loading && !error && bySeason.length > 0 && (
@@ -126,7 +126,7 @@ export default function TvEpisodes() {
                 <h2 className="text-lg font-black text-emerald-400 mb-4 flex items-center gap-2">
                   <span className="w-1 h-6 bg-emerald-400 rounded-full" />
                   {season === 0 ? 'Specials / extras' : `Season ${season}`}
-                  <span className="text-gray-600 text-sm font-normal">({eps.length})</span>
+                  <span className="text-gray-400 text-sm font-normal">({eps.length})</span>
                 </h2>
                 <div className="rounded-xl border border-white/10 divide-y divide-white/5 bg-gray-900/30 overflow-hidden">
                   {eps.map(ep => (
@@ -148,7 +148,7 @@ function EpisodeRow({ episode }: { episode: TvEpisode }) {
 
   return (
     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 px-4 py-4 hover:bg-white/[0.03]">
-      <div className="shrink-0 w-full sm:w-28 flex flex-row sm:flex-col gap-2 text-xs text-gray-500">
+      <div className="shrink-0 w-full sm:w-28 flex flex-row sm:flex-col gap-2 text-xs text-gray-400">
         <span className="inline-flex items-center gap-1 text-emerald-400/90 font-semibold">
           <Calendar className="w-3.5 h-3.5" />
           {episode.airdate ?? 'TBA'}
@@ -159,11 +159,11 @@ function EpisodeRow({ episode }: { episode: TvEpisode }) {
       </div>
       <div className="min-w-0 flex-1">
         <p className="text-white font-semibold text-sm sm:text-base">
-          <span className="text-gray-500 font-normal mr-2">{numLabel}</span>
+          <span className="text-gray-400 font-normal mr-2">{numLabel}</span>
           {episode.name}
         </p>
         {episode.summary ? (
-          <p className="text-gray-500 text-xs sm:text-sm mt-2 line-clamp-3">{episode.summary}</p>
+          <p className="text-gray-400 text-xs sm:text-sm mt-2 line-clamp-3">{episode.summary}</p>
         ) : null}
       </div>
     </div>

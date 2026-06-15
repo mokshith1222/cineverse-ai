@@ -25,13 +25,16 @@ export default function TvCard({ show }: Props) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <img
-        src={show.poster}
-        alt={show.title}
-        loading="lazy"
-        decoding="async"
-        className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-      />
+      <picture>
+        <source srcSet={`${show.poster}?format=webp`} type="image/webp" />
+        <img
+          src={show.poster}
+          alt={show.title}
+          loading="lazy"
+          decoding="async"
+          className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+      </picture>
 
       <Link
         to={detailHref}
@@ -55,6 +58,7 @@ export default function TvCard({ show }: Props) {
           e.stopPropagation();
           setBookmarked(!bookmarked);
         }}
+        aria-label={bookmarked ? `Remove ${show.title} bookmark` : `Bookmark ${show.title}`}
         className="absolute top-2 right-2 z-[20] w-8 h-8 bg-gray-950/80 backdrop-blur-sm rounded-lg border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 hover:bg-emerald-400/20 hover:border-emerald-400/30"
       >
         <Bookmark className={`w-4 h-4 ${bookmarked ? 'fill-emerald-400 text-emerald-400' : 'text-gray-400'}`} />

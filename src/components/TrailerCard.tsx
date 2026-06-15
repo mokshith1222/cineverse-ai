@@ -78,13 +78,13 @@ export default function TrailerCard({ trailer }: Props) {
             href={watchUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 mt-0.5 text-gray-500 hover:text-cyan-300 transition-colors"
+            className="shrink-0 mt-0.5 text-gray-400 hover:text-cyan-300 transition-colors"
             aria-label={`Open ${trailer.title} on YouTube`}
           >
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>
-        <div className="flex items-center justify-between text-gray-500 text-xs">
+        <div className="flex items-center justify-between text-gray-400 text-xs">
           <span>{trailer.releaseDate}</span>
           <div className="flex items-center gap-1">
             <Eye className="w-3 h-3" />

@@ -141,45 +141,12 @@ const titleSourcesCache = new Map<string, WatchmodeSource[]>();
 let detectedRegion: string | null = null;
 let regionDetectionPromise: Promise<string> | null = null;
 
-// Detect which regions are available on the current API key
 export async function detectAvailableRegion(): Promise<string> {
   if (detectedRegion) return detectedRegion;
-  if (regionDetectionPromise) return regionDetectionPromise;
-
-  regionDetectionPromise = (async () => {
-    const regions = ['IN', 'GB', 'CA', 'AU', 'US', 'DE', 'FR', 'JP', 'BR', 'MX', 'ES', 'IT', 'NZ'];
-    
-    for (const region of regions) {
-      try {
-        console.log(`[Watchmode] Testing region: ${region}`);
-        const data = await fetchJson<WatchmodeListTitlesResponse>('/list-titles/', {
-          types: 'movie',
-          regions: region,
-          limit: 1,
-          page: 1,
-        });
-        
-        if (data && data.titles) {
-          console.log(`[Watchmode] ✓ Region ${region} is available`);
-          detectedRegion = region;
-          return region;
-        }
-      } catch (err: any) {
-        if (err?.message?.includes('not enabled')) {
-          console.log(`[Watchmode] ✗ Region ${region} not enabled for this API key`);
-        } else {
-          console.log(`[Watchmode] ✗ Region ${region} test failed:`, err?.message?.slice(0, 80));
-        }
-      }
-    }
-    
-    // Fallback to first available
-    console.warn('[Watchmode] No region detected, using IN as default');
-    detectedRegion = 'IN';
-    return 'IN';
-  })();
-
-  return regionDetectionPromise;
+  // To avoid hitting rate limits with multiple test requests, we default to a standard region.
+  // The backend API should handle region failover or fallback, rather than the client polling all regions.
+  detectedRegion = 'US'; // Defaulting to US. You can also use 'IN' if that's your preferred region.
+  return detectedRegion;
 }
 
 // Get the detected region without waiting (returns cached or default)

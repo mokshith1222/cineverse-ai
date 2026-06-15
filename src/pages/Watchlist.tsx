@@ -40,10 +40,10 @@ const Watchlist = () => {
   const renderEmptyState = () => (
     <div className="flex flex-col items-center justify-center py-20 px-4 text-center animate-in fade-in zoom-in duration-500">
       <div className="w-20 h-20 rounded-full bg-gray-900 flex items-center justify-center mb-6 border border-white/5 shadow-2xl">
-        <BookmarkX className="w-10 h-10 text-gray-600" />
+        <BookmarkX className="w-10 h-10 text-gray-400" />
       </div>
       <h2 className="text-2xl font-bold text-white mb-2 tracking-tight">Your watchlist is empty</h2>
-      <p className="text-gray-500 max-w-xs mx-auto mb-8 text-sm leading-relaxed">
+      <p className="text-gray-400 max-w-xs mx-auto mb-8 text-sm leading-relaxed">
         You haven't added any {activeTab === 'movie' ? 'movies' : activeTab === 'tv' ? 'TV shows' : 'anime'} yet.
       </p>
       <Link
@@ -189,7 +189,7 @@ const Watchlist = () => {
                     >
                       <Icon className="w-4 h-4 text-cyan-400 mb-2" />
                       <p className="text-xl font-black text-white">{count}</p>
-                      <p className="text-[10px] uppercase font-bold text-gray-500">{tab.label}</p>
+                      <p className="text-[10px] uppercase font-bold text-gray-400">{tab.label}</p>
                     </button>
                   );
                 })}
@@ -211,7 +211,7 @@ const Watchlist = () => {
                     <img src={item.poster_url} alt={`${item.title} poster`} loading="lazy" className="w-8 h-11 rounded object-cover bg-gray-800" />
                     <div className="min-w-0">
                       <p className="text-sm font-bold text-white truncate">{item.title}</p>
-                      <p className="text-[10px] uppercase text-gray-500">{item.item_type}</p>
+                      <p className="text-[10px] uppercase text-gray-400">{item.item_type}</p>
                     </div>
                   </Link>
                 ))}
@@ -239,7 +239,7 @@ const Watchlist = () => {
                   })}
                 </div>
               ) : (
-                <p className="text-sm text-gray-500">Add more titles and CineVerse will build themed collections automatically.</p>
+                <p className="text-sm text-gray-400">Add more titles and CineVerse will build themed collections automatically.</p>
               )}
             </div>
           </div>

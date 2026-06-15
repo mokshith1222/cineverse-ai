@@ -26,19 +26,22 @@ export default function MovieCard({ movie, featured = false }: Props) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <img
-        src={posterSrc}
-        alt={movie.title}
-        loading="lazy"
-        decoding="async"
-        onError={() => {
-          if (posterSrc !== OMDB_FALLBACK_POSTER) {
-            console.warn('[MovieCard] Poster failed, using fallback', { title: movie.title, poster: posterSrc });
-            setPosterSrc(OMDB_FALLBACK_POSTER);
-          }
-        }}
-        className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-      />
+      <picture>
+        <source srcSet={`${posterSrc}?format=webp`} type="image/webp" />
+        <img
+          src={posterSrc}
+          alt={movie.title}
+          loading="lazy"
+          decoding="async"
+          onError={() => {
+            if (posterSrc !== OMDB_FALLBACK_POSTER) {
+              console.warn('[MovieCard] Poster failed, using fallback', { title: movie.title, poster: posterSrc });
+              setPosterSrc(OMDB_FALLBACK_POSTER);
+            }
+          }}
+          className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+      </picture>
 
       {detailHref && (
         <Link

@@ -467,7 +467,7 @@ export default function OTTTracker() {
             ].map(stat => (
               <div key={stat.label} className="bg-gray-900/40 backdrop-blur-sm border border-white/5 rounded-2xl p-4 text-center group hover:border-white/10 transition-colors">
                 <div className={`text-3xl font-black mb-1 ${stat.color}`}>{stat.value}</div>
-                <div className="text-gray-500 text-[10px] uppercase font-black tracking-widest">{stat.label}</div>
+                <div className="text-gray-400 text-[10px] uppercase font-black tracking-widest">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -483,7 +483,7 @@ export default function OTTTracker() {
                 <button
                   onClick={() => setPlatformFilter('All')}
                   className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all ${
-                    platformFilter === 'All' ? 'bg-white/10 border-white/20 text-white' : 'bg-gray-900/50 border-white/5 text-gray-500 hover:text-gray-300'
+                    platformFilter === 'All' ? 'bg-white/10 border-white/20 text-white' : 'bg-gray-900/50 border-white/5 text-gray-400 hover:text-gray-300'
                   }`}
                 >
                   All Platforms
@@ -493,7 +493,7 @@ export default function OTTTracker() {
                     key={p.id}
                     onClick={() => setPlatformFilter(p.name)}
                     className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold border transition-all ${
-                      platformFilter === p.name ? 'border-white/20 text-white shadow-lg shadow-black/20' : 'bg-gray-900/50 border-white/5 text-gray-500 hover:text-gray-300'
+                      platformFilter === p.name ? 'border-white/20 text-white shadow-lg shadow-black/20' : 'bg-gray-900/50 border-white/5 text-gray-400 hover:text-gray-300'
                     }`}
                     style={platformFilter === p.name ? { backgroundColor: p.color + '30', borderColor: p.color + '50' } : {}}
                   >
@@ -513,7 +513,7 @@ export default function OTTTracker() {
                       className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all ${
                         filter === s
                           ? (cfg ? cfg.color : 'bg-white/10 border-white/20 text-white shadow-lg shadow-black/20')
-                          : 'bg-gray-900/50 border-white/5 text-gray-500 hover:text-gray-300'
+                          : 'bg-gray-900/50 border-white/5 text-gray-400 hover:text-gray-300'
                       }`}
                     >
                       {s}
@@ -563,17 +563,17 @@ export default function OTTTracker() {
                             <h3 className="text-white text-base font-bold leading-tight line-clamp-1">{show.title}</h3>
                             <button
                               onClick={() => removeShow(show.id)}
-                              className="shrink-0 p-1.5 text-gray-600 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-all opacity-0 group-hover:opacity-100"
+                              className="shrink-0 p-1.5 text-gray-400 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-all opacity-0 group-hover:opacity-100"
                             >
                               <Trash2 size={14} />
                             </button>
                           </div>
 
-                          <p className="text-gray-500 text-xs font-medium mt-0.5">{show.platform}</p>
+                          <p className="text-gray-400 text-xs font-medium mt-0.5">{show.platform}</p>
 
                           <div className="mt-auto space-y-3">
                             <div>
-                              <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-gray-500 mb-1.5">
+                              <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1.5">
                                 <span>{show.progress} / {show.total_episodes || '?'} EPS</span>
                                 <span className="text-cyan-400">{progressPercent}%</span>
                               </div>
@@ -623,7 +623,7 @@ export default function OTTTracker() {
             ) : (
               <div className="text-center py-32 border-2 border-dashed border-white/5 rounded-3xl bg-gray-900/20">
                 <BookMarked className="w-16 h-16 text-gray-800 mx-auto mb-4 opacity-20" />
-                <p className="text-gray-500 font-medium">Your tracker is empty</p>
+                <p className="text-gray-400 font-medium">Your tracker is empty</p>
                 <button 
                   onClick={() => setShowAddModal(true)}
                   className="mt-4 text-cyan-400 text-sm font-bold hover:underline"
@@ -641,7 +641,7 @@ export default function OTTTracker() {
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-black text-white tracking-tight">Discover on OTT</h2>
-                    <p className="text-gray-500 text-sm">Popular movies & TV currently available on major providers</p>
+                    <p className="text-gray-400 text-sm">Popular movies & TV currently available on major providers</p>
                   </div>
                   {discoveryLoading ? <Loader2 className="w-5 h-5 animate-spin text-cyan-400" /> : null}
                 </div>
@@ -651,7 +651,7 @@ export default function OTTTracker() {
                   <button
                     onClick={() => setPlatformFilter('All')}
                     className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all ${
-                      platformFilter === 'All' ? 'bg-white/10 border-white/20 text-white' : 'bg-gray-900/50 border-white/5 text-gray-500 hover:text-gray-300'
+                      platformFilter === 'All' ? 'bg-white/10 border-white/20 text-white' : 'bg-gray-900/50 border-white/5 text-gray-400 hover:text-gray-300'
                     }`}
                   >
                     All Providers
@@ -661,7 +661,7 @@ export default function OTTTracker() {
                       key={p.id}
                       onClick={() => setPlatformFilter(p.name)}
                       className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold border transition-all ${
-                        platformFilter === p.name ? 'border-white/20 text-white shadow-lg shadow-black/20' : 'bg-gray-900/50 border-white/5 text-gray-500 hover:text-gray-300'
+                        platformFilter === p.name ? 'border-white/20 text-white shadow-lg shadow-black/20' : 'bg-gray-900/50 border-white/5 text-gray-400 hover:text-gray-300'
                       }`}
                       style={platformFilter === p.name ? { backgroundColor: p.color + '30', borderColor: p.color + '50' } : {}}
                     >
@@ -684,7 +684,7 @@ export default function OTTTracker() {
                         className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all ${
                           filter === s
                             ? (cfg ? cfg.color : 'bg-white/10 border-white/20 text-white shadow-lg shadow-black/20')
-                            : 'bg-gray-900/50 border-white/5 text-gray-500 hover:text-gray-300'
+                            : 'bg-gray-900/50 border-white/5 text-gray-400 hover:text-gray-300'
                         }`}
                         title={s === 'All' ? 'Show all titles' : 'Only show titles you have tracked with this status'}
                       >
@@ -750,14 +750,14 @@ export default function OTTTracker() {
               ) : !discoveryLoading && (
                 <div className="text-center py-32 border-2 border-dashed border-white/5 rounded-3xl bg-gray-900/20">
                   <Compass className="w-16 h-16 text-gray-800 mx-auto mb-4 opacity-20" />
-                  <p className="text-gray-500 font-medium">No content found</p>
+                  <p className="text-gray-400 font-medium">No content found</p>
                   <button onClick={loadDiscovery} className="mt-4 text-cyan-400 text-sm font-bold hover:underline">
                     Try refreshing
                   </button>
                 </div>
               )}
 
-              <p className="text-gray-700 text-xs mt-8">
+              <p className="text-gray-300 text-xs mt-8">
                 Data provided by Watchmode. Availability may vary by region.
               </p>
             </div>
@@ -776,7 +776,7 @@ export default function OTTTracker() {
                </div>
                <div>
                   <h3 className="text-white text-xl font-black tracking-tight">Add to Tracker</h3>
-                  <p className="text-gray-500 text-xs">Search for a show or movie to track</p>
+                  <p className="text-gray-400 text-xs">Search for a show or movie to track</p>
                </div>
             </div>
 
@@ -784,7 +784,7 @@ export default function OTTTracker() {
               <div className="relative">
                 <label className="text-gray-400 text-[10px] font-black uppercase tracking-widest mb-2 block">Search Title</label>
                 <div className="relative">
-                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
+                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                    <input
                      autoFocus
                      required
@@ -816,7 +816,7 @@ export default function OTTTracker() {
                           <img src={item.poster || 'https://via.placeholder.com/150'} className="w-10 h-14 object-cover rounded-lg" alt={`${item.title} poster`} loading="lazy" />
                           <div>
                             <p className="text-white text-sm font-bold line-clamp-1">{item.title}</p>
-                            <div className="flex items-center gap-2 text-[10px] text-gray-500 font-bold uppercase">
+                            <div className="flex items-center gap-2 text-[10px] text-gray-400 font-bold uppercase">
                               <span className="flex items-center gap-1">
                                 {item.type === 'Movie' ? <Film size={10} /> : <Tv size={10} />}
                                 {item.type}
@@ -893,7 +893,7 @@ export default function OTTTracker() {
                       setNewShow(prev => ({ ...prev, title: '', poster_url: '' }));
                       setSearchQuery('');
                     }}
-                    className="p-1.5 text-gray-500 hover:text-white"
+                    className="p-1.5 text-gray-400 hover:text-white"
                    >
                      <X size={16} />
                    </button>

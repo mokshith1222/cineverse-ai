@@ -59,7 +59,7 @@ export default function EditorialCollectionCard({ collection, index }: Props) {
         </div>
 
         <p className="text-sm leading-6 text-gray-400">{collection.subtitle}</p>
-        <p className="mt-3 text-sm leading-6 text-gray-500">{collection.summary}</p>
+        <p className="mt-3 text-sm leading-6 text-gray-400">{collection.summary}</p>
 
         <div className="mt-5 space-y-3">
           {collection.items.map(item => (
@@ -76,7 +76,7 @@ export default function EditorialCollectionCard({ collection, index }: Props) {
                   <h4 className="truncate text-sm font-bold text-white group-hover:text-white">{item.title}</h4>
                   <span className={`shrink-0 text-[10px] font-black uppercase tracking-[0.25em] ${accent.link}`}>Open</span>
                 </div>
-                <p className="mt-1 text-xs leading-5 text-gray-500">{item.description}</p>
+                <p className="mt-1 text-xs leading-5 text-gray-400">{item.description}</p>
               </div>
             </Link>
           ))}

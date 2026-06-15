@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/omdb",
+      "destination": "/api/omdb.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

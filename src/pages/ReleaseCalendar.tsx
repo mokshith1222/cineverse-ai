@@ -215,7 +215,7 @@ export default function ReleaseCalendar() {
                 <div key={stat.label} className="rounded-xl border border-white/5 bg-gray-900/50 px-4 py-3">
                   <Icon className="w-4 h-4 text-cyan-400 mb-2" />
                   <p className="text-2xl font-black text-white">{stat.value}</p>
-                  <p className="text-xs text-gray-500">{stat.label}</p>
+                  <p className="text-xs text-gray-400">{stat.label}</p>
                 </div>
               );
             })}
@@ -229,11 +229,11 @@ export default function ReleaseCalendar() {
                 className={`px-4 py-2 rounded-xl text-xs font-black uppercase border transition-all active:scale-95 ${
                   filter === item
                     ? 'bg-cyan-500 border-cyan-400 text-gray-950'
-                    : 'bg-gray-900/60 border-white/10 text-gray-500 hover:text-white'
+                    : 'bg-gray-900/60 border-white/10 text-gray-400 hover:text-white'
                 }`}
               >
                 {item}
-                <span className={`ml-2 ${filter === item ? 'text-gray-800' : 'text-gray-600'}`}>
+                <span className={`ml-2 ${filter === item ? 'text-gray-800' : 'text-gray-400'}`}>
                   {item === 'All' ? items.length : counts[item]}
                 </span>
               </button>
@@ -262,10 +262,10 @@ export default function ReleaseCalendar() {
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="rounded-md bg-cyan-400/10 border border-cyan-400/20 px-2 py-0.5 text-[10px] font-black uppercase text-cyan-300">{item.kind}</span>
-                        <span className="text-xs text-gray-500">{daysUntil(item.date)}</span>
+                        <span className="text-xs text-gray-400">{daysUntil(item.date)}</span>
                       </div>
                       <h3 className="text-white font-bold leading-tight line-clamp-2">{item.title}</h3>
-                      <p className="text-xs text-gray-500 mt-1 line-clamp-1">{item.meta}</p>
+                      <p className="text-xs text-gray-400 mt-1 line-clamp-1">{item.meta}</p>
                       <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-gray-400">
                         <span className="flex items-center gap-1"><CalendarDays className="w-3 h-3" /> {item.date}</span>
                         {item.time ? <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {item.time}</span> : null}
@@ -293,7 +293,7 @@ export default function ReleaseCalendar() {
         )}
 
         {!loading && visibleItems.length === 0 && (
-          <div className="rounded-2xl border border-white/5 bg-gray-900/40 py-20 text-center text-gray-500">
+          <div className="rounded-2xl border border-white/5 bg-gray-900/40 py-20 text-center text-gray-400">
             No releases found for this filter.
           </div>
         )}

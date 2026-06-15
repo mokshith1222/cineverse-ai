@@ -51,7 +51,7 @@ export default function About() {
                 <Users className="w-5 h-5" />
                 <h3 className="font-bold text-white">Editorial-first discovery</h3>
               </div>
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-400 text-sm">
                 Every recommendation layer is written to help viewers understand why something is worth opening, not just what the title is.
               </p>
             </div>
@@ -60,7 +60,7 @@ export default function About() {
                 <ShieldCheck className="w-5 h-5" />
                 <h3 className="font-bold text-white">Trust and transparency</h3>
               </div>
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-400 text-sm">
                 We pull data from trusted sources like OMDb, TVMaze, Jikan, Watchmode, and Supabase-backed services, while clearly stating that we do not host or stream media.
               </p>
             </div>
@@ -87,7 +87,7 @@ export default function About() {
           </section>
 
           <footer className="pt-8 border-t border-white/5 text-center">
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-400 text-sm">
               Founded in 2026. Built as a premium entertainment discovery product with original editorial content and clear trust signals.
             </p>
           </footer>

@@ -226,7 +226,7 @@ export default function TvDetail() {
                   <span className="inline-flex items-center gap-1.5 text-amber-400 font-semibold">
                     <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                     {card.rating}
-                    <span className="text-gray-500 font-normal">/10</span>
+                    <span className="text-gray-400 font-normal">/10</span>
                   </span>
                 )}
                 {card.year > 0 && (
@@ -263,7 +263,7 @@ export default function TvDetail() {
               <dl className="grid sm:grid-cols-2 gap-4 text-sm">
                 {(card.network || raw.officialSite) && (
                   <div className="sm:col-span-2">
-                    <dt className="text-gray-500 mb-1">Where to watch</dt>
+                    <dt className="text-gray-400 mb-1">Where to watch</dt>
                     <dd className="text-white flex flex-wrap gap-3 items-center">
                       {card.network && <span>{card.network}</span>}
                       {raw.officialSite && (
@@ -282,7 +282,7 @@ export default function TvDetail() {
                 )}
               </dl>
 
-              <p className="text-xs text-gray-600 font-mono flex items-center gap-2">
+              <p className="text-xs text-gray-400 font-mono flex items-center gap-2">
                 <MonitorPlay className="w-3.5 h-3.5 text-emerald-500/80" />
                 TVMaze ID: {raw.id}
               </p>

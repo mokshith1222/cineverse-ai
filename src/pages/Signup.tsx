@@ -49,7 +49,7 @@ const Signup = () => {
           <p className="mt-2 text-sm text-gray-400">
             We've sent a verification link to <span className="text-white font-medium">{email}</span>. Please verify your email to continue.
           </p>
-          <p className="text-xs text-gray-500 mt-4">
+          <p className="text-xs text-gray-400 mt-4">
             Redirecting to login page in a few seconds...
           </p>
         </div>
@@ -81,7 +81,7 @@ const Signup = () => {
         <form className="mt-8 space-y-6" onSubmit={handleSignup}>
           <div className="space-y-4">
             <div className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500 group-focus-within:text-indigo-500 transition-colors">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 group-focus-within:text-indigo-500 transition-colors">
                 <User size={18} />
               </div>
               <input
@@ -96,7 +96,7 @@ const Signup = () => {
               />
             </div>
             <div className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500 group-focus-within:text-indigo-500 transition-colors">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 group-focus-within:text-indigo-500 transition-colors">
                 <Mail size={18} />
               </div>
               <input
@@ -112,7 +112,7 @@ const Signup = () => {
               />
             </div>
             <div className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500 group-focus-within:text-indigo-500 transition-colors">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 group-focus-within:text-indigo-500 transition-colors">
                 <Lock size={18} />
               </div>
               <input

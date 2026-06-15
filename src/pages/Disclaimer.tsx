@@ -51,7 +51,7 @@ export default function Disclaimer() {
               CineVerse is an independent platform and is <strong>not</strong> affiliated with, endorsed by, or partnered with Netflix, Amazon Prime Video, Disney+, HBO, or any other service provider mentioned on this site. All trademarks, logos, and brand names are the property of their respective owners.
             </p>
             <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
-              <p className="text-gray-500 text-xs">
+              <p className="text-gray-400 text-xs">
                 Brand names and availability information are shown for identification and informational purposes only.
               </p>
             </div>
@@ -65,7 +65,7 @@ export default function Disclaimer() {
             <p className="text-gray-400 text-sm leading-relaxed">
               CineVerse may use cookies and similar technologies for essential functionality (such as authentication), analytics, and to support advertising. Third-party vendors (including ad networks) may also use cookies to measure performance and deliver relevant ads.
             </p>
-            <p className="text-gray-500 text-sm leading-relaxed mt-4">
+            <p className="text-gray-400 text-sm leading-relaxed mt-4">
               For details and choices, see our{' '}
               <Link to="/privacy" className="text-cyan-400 hover:underline">
                 Privacy Policy
@@ -82,7 +82,7 @@ export default function Disclaimer() {
           </section>
 
           <div className="bg-cyan-500/5 border border-cyan-400/10 rounded-2xl p-6 text-center">
-            <p className="text-gray-500 text-xs">
+            <p className="text-gray-400 text-xs">
               Questions about this Disclaimer? Contact us at{' '}
               <a href="mailto:mokshithnaik932@gmail.com" className="text-cyan-400 hover:underline">
                 mokshithnaik932@gmail.com
@@ -92,7 +92,7 @@ export default function Disclaimer() {
           </div>
 
           <footer className="text-center pt-8">
-            <p className="text-gray-600 text-[10px] font-black uppercase tracking-widest">
+            <p className="text-gray-400 text-[10px] font-black uppercase tracking-widest">
               Standard Compliance Notice - CineVerse AI
             </p>
           </footer>

@@ -254,7 +254,7 @@ export default function Movies() {
 
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 value={query}
                 onChange={e => setQuery(e.target.value)}
@@ -290,7 +290,7 @@ export default function Movies() {
                 {searching ? 'Search Results' : 'Trending Now'}
                 {searching && <span className="text-cyan-400 text-sm font-medium bg-cyan-400/10 px-2 py-0.5 rounded-lg border border-cyan-400/20">{totalResults}</span>}
               </h2>
-              <p className="text-gray-500 text-sm mt-1">
+              <p className="text-gray-400 text-sm mt-1">
                 {searching 
                   ? `Showing top matches for "${debouncedQuery}" sorted by ${sort.toLowerCase()}`
                   : `Currently popular titles from OMDb metadata`
@@ -330,7 +330,7 @@ export default function Movies() {
           ) : !searchLoading ? (
             <div className="text-center py-20 border-2 border-dashed border-white/5 rounded-3xl bg-gray-900/20">
               <Film className="w-16 h-16 text-gray-800 mx-auto mb-4 opacity-20" />
-              <p className="text-gray-500 font-medium">No movies found matching your criteria</p>
+              <p className="text-gray-400 font-medium">No movies found matching your criteria</p>
               <button 
                 onClick={() => setQuery('')}
                 className="mt-4 text-cyan-400 text-sm hover:underline"

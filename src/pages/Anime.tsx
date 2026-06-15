@@ -210,7 +210,7 @@ export default function Anime() {
           {!selectedCategory && (
             <div className="flex flex-col sm:flex-row gap-3 mt-4 animate-in fade-in duration-500">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   value={query}
                   onChange={e => setQuery(e.target.value)}
@@ -292,7 +292,7 @@ export default function Anime() {
         {searching && (
           <section>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-400 text-sm">
                 {searchLoading ? (
                   'Searching MyAnimeList…'
                 ) : (
@@ -335,8 +335,8 @@ export default function Anime() {
             ) : (
               !searchErr && (
                 <div className="text-center py-16 rounded-2xl border border-white/5 bg-gray-900/40">
-                  <Zap className="w-12 h-12 text-gray-700 mx-auto mb-3" />
-                  <p className="text-gray-500 text-sm">No anime matched that search.</p>
+                  <Zap className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+                  <p className="text-gray-400 text-sm">No anime matched that search.</p>
                 </div>
               )
             )}

@@ -208,7 +208,7 @@ export default function MovieDetail() {
 
                   <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
                     {detail.Title}{' '}
-                    <span className="text-gray-500 font-semibold text-2xl sm:text-3xl">({detail.Year})</span>
+                    <span className="text-gray-400 font-semibold text-2xl sm:text-3xl">({detail.Year})</span>
                   </h1>
 
                   <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
@@ -225,7 +225,7 @@ export default function MovieDetail() {
                       <span className="inline-flex items-center gap-1.5 text-amber-400 font-semibold">
                         <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                         {detail.imdbRating}
-                        <span className="text-gray-500 font-normal">IMDb</span>
+                        <span className="text-gray-400 font-normal">IMDb</span>
                       </span>
                     )}
                     {detail.imdbVotes && detail.imdbVotes !== 'N/A' && (
@@ -256,37 +256,37 @@ export default function MovieDetail() {
                   <dl className="grid sm:grid-cols-2 gap-4 text-sm">
                     {detail.Director && detail.Director !== 'N/A' && (
                       <div>
-                        <dt className="text-gray-500 mb-1">Director</dt>
+                        <dt className="text-gray-400 mb-1">Director</dt>
                         <dd className="text-white">{detail.Director}</dd>
                       </div>
                     )}
                     {detail.Writer && detail.Writer !== 'N/A' && (
                       <div>
-                        <dt className="text-gray-500 mb-1">Writers</dt>
+                        <dt className="text-gray-400 mb-1">Writers</dt>
                         <dd className="text-white">{detail.Writer}</dd>
                       </div>
                     )}
                     {detail.Actors && detail.Actors !== 'N/A' && (
                       <div className="sm:col-span-2">
-                        <dt className="text-gray-500 mb-1">Cast</dt>
+                        <dt className="text-gray-400 mb-1">Cast</dt>
                         <dd className="text-white">{detail.Actors}</dd>
                       </div>
                     )}
                     {detail.BoxOffice && detail.BoxOffice !== 'N/A' && (
                       <div>
-                        <dt className="text-gray-500 mb-1">Box Office</dt>
+                        <dt className="text-gray-400 mb-1">Box Office</dt>
                         <dd className="text-white">{detail.BoxOffice}</dd>
                       </div>
                     )}
                     {detail.Awards && detail.Awards !== 'N/A' && (
                       <div className="sm:col-span-2">
-                        <dt className="text-gray-500 mb-1">Awards</dt>
+                        <dt className="text-gray-400 mb-1">Awards</dt>
                         <dd className="text-white">{detail.Awards}</dd>
                       </div>
                     )}
                   </dl>
 
-                  <p className="text-xs text-gray-600 font-mono">
+                  <p className="text-xs text-gray-400 font-mono">
                     {isTvdbMovie ? 'TVDB ID' : 'IMDb ID'}: {detail.imdbID.replace('tvdb-', '')}
                   </p>
 
@@ -302,7 +302,7 @@ export default function MovieDetail() {
                 <div className="flex flex-wrap items-end justify-between gap-4 mb-4">
                   <div>
                     <h2 className="text-xl font-black text-white tracking-tight">Trailer</h2>
-                    <p className="text-gray-500 text-sm mt-1">
+                    <p className="text-gray-400 text-sm mt-1">
                       Powered by YouTube search — cached per movie to save API quota.
                     </p>
                   </div>
@@ -363,7 +363,7 @@ export default function MovieDetail() {
                 {!trailerLoading && !trailerVideoId && fallbackSearch && (
                   <div className="max-w-4xl rounded-xl border border-white/10 bg-gray-900/50 overflow-hidden">
                     <div className="grid md:grid-cols-[1.4fr_1fr] gap-0">
-                      <div className="aspect-video md:aspect-auto md:min-h-[220px] bg-gray-900 flex items-center justify-center text-gray-600">
+                      <div className="aspect-video md:aspect-auto md:min-h-[220px] bg-gray-900 flex items-center justify-center text-gray-400">
                         <div className="text-center px-6 py-10">
                           <Film className="w-12 h-12 mx-auto mb-3 opacity-40" />
                           <p className="text-gray-400 text-sm leading-relaxed">

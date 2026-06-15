@@ -47,13 +47,13 @@ export default function Privacy() {
                 "OTT platform preferences",
                 "Communication details if you contact us"
               ].map((item, i) => (
-                <li key={i} className="flex gap-3 items-start text-gray-500 text-sm">
+                <li key={i} className="flex gap-3 items-start text-gray-400 text-sm">
                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-500/50 mt-1.5 shrink-0" />
                   {item}
                 </li>
               ))}
             </ul>
-            <p className="text-gray-500 text-sm leading-relaxed mt-5">
+            <p className="text-gray-400 text-sm leading-relaxed mt-5">
               We may also automatically collect basic usage and device data (such as pages viewed, approximate location based on IP, browser type, and error logs) to keep the platform secure and improve performance.
             </p>
           </section>
@@ -68,7 +68,7 @@ export default function Privacy() {
             </p>
             <div className="bg-white/5 rounded-2xl p-5 border border-white/5 mt-5 space-y-3">
               <p className="text-gray-400 text-sm font-bold">Google AdSense and the DoubleClick DART Cookie</p>
-              <ul className="text-gray-500 text-xs leading-relaxed list-disc list-inside space-y-2">
+              <ul className="text-gray-400 text-xs leading-relaxed list-disc list-inside space-y-2">
                 <li>Google, as a third-party vendor, uses cookies to serve ads on our site.</li>
                 <li>Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet.</li>
                 <li>Users may opt-out of personalized advertising by visiting <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Google Ad Settings</a>.</li>
@@ -119,7 +119,7 @@ export default function Privacy() {
                 "Control cookies in your browser and review ad personalization settings from your device or ad provider.",
                 "Opt out of non-essential marketing communications (if any are sent)."
               ].map((item, i) => (
-                <li key={i} className="flex gap-3 items-start text-gray-500 text-sm">
+                <li key={i} className="flex gap-3 items-start text-gray-400 text-sm">
                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-500/50 mt-1.5 shrink-0" />
                   {item}
                 </li>
@@ -135,7 +135,7 @@ export default function Privacy() {
           </section>
 
           <div className="bg-cyan-500/5 border border-cyan-400/10 rounded-2xl p-6 text-center">
-             <p className="text-gray-500 text-xs">
+             <p className="text-gray-400 text-xs">
                If you have any questions about this Privacy Policy, please contact us at <a href="mailto:mokshithnaik932@gmail.com" className="text-cyan-400 hover:underline">mokshithnaik932@gmail.com</a>.
              </p>
           </div>

@@ -342,7 +342,7 @@ export default function Trailers() {
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-4 relative z-10">
             <div className="relative flex-1 min-w-0">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 value={query}
                 onChange={e => setQuery(e.target.value)}
@@ -353,7 +353,7 @@ export default function Trailers() {
                 <button
                   type="button"
                   onClick={() => setQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
                   aria-label="Clear trailer search"
                 >
                   <X className="w-4 h-4" />
@@ -369,7 +369,7 @@ export default function Trailers() {
                   className={`px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest border transition-all duration-300 ${
                     activeType === type
                       ? 'bg-blue-500 border-blue-400 text-gray-950 shadow-lg shadow-blue-500/20'
-                      : 'bg-gray-900/50 border-white/10 text-gray-500 hover:text-white hover:border-white/20 backdrop-blur-sm'
+                      : 'bg-gray-900/50 border-white/10 text-gray-400 hover:text-white hover:border-white/20 backdrop-blur-sm'
                   }`}
                 >
                   {type}
@@ -418,7 +418,7 @@ export default function Trailers() {
           <>
             {!searching && activeType === 'All' && spotlight && (
               <div className="mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                <p className="text-gray-600 text-[10px] font-black uppercase tracking-[0.2em] mb-4">Spotlight</p>
+                <p className="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mb-4">Spotlight</p>
                 <div className="relative rounded-3xl overflow-hidden aspect-video max-h-[500px] shadow-2xl shadow-black/50 border border-white/5">
                   <iframe
                     src={`https://www.youtube.com/embed/${spotlight.youtubeId}`}
@@ -444,7 +444,7 @@ export default function Trailers() {
             )}
 
             <div className="flex items-center justify-between mb-8">
-              <p className="text-gray-500 text-sm font-medium">
+              <p className="text-gray-400 text-sm font-medium">
                 Showing <span className="text-white font-bold">{filtered.length}</span> {searching ? `results for "${debouncedQuery}"` : activeType === 'All' ? 'live trailers' : `${activeType} trailers`}
               </p>
               {refreshing && <Loader2 className="w-4 h-4 animate-spin text-blue-400" />}
@@ -461,7 +461,7 @@ export default function Trailers() {
             ) : (
               <div className="text-center py-32 rounded-3xl border-2 border-dashed border-white/5 bg-gray-900/20">
                 <Play className="w-16 h-16 text-gray-800 mx-auto mb-4 opacity-20" />
-                <p className="text-gray-500 font-medium">No trailers found in this category.</p>
+                <p className="text-gray-400 font-medium">No trailers found in this category.</p>
                 <button onClick={() => setActiveType('All')} className="mt-4 text-blue-400 text-sm font-bold hover:underline">Clear filter</button>
               </div>
             )}

@@ -22,13 +22,16 @@ export default function AnimeCard({ anime }: Props) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <img
-        src={anime.poster}
-        alt={anime.title}
-        loading="lazy"
-        decoding="async"
-        className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-      />
+      <picture>
+        <source srcSet={`${anime.poster}?format=webp`} type="image/webp" />
+        <img
+          src={anime.poster}
+          alt={anime.title}
+          loading="lazy"
+          decoding="async"
+          className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+      </picture>
 
       <Link
         to={detailHref}
@@ -52,6 +55,7 @@ export default function AnimeCard({ anime }: Props) {
           e.stopPropagation();
           setBookmarked(!bookmarked);
         }}
+        aria-label={bookmarked ? `Remove ${anime.title} bookmark` : `Bookmark ${anime.title}`}
         className="absolute top-2 right-2 z-[20] w-8 h-8 bg-gray-950/80 backdrop-blur-sm rounded-lg border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 hover:bg-orange-400/20 hover:border-orange-400/30"
       >
         <Bookmark className={`w-4 h-4 ${bookmarked ? 'fill-orange-400 text-orange-400' : 'text-gray-400'}`} />

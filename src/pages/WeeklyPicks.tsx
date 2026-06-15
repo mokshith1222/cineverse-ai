@@ -49,7 +49,7 @@ export default function WeeklyPicks() {
               <div>
                 <h2 className="text-white font-bold">{w.title}</h2>
                 <p className="text-gray-300 text-sm mt-1">{w.reason}</p>
-                <p className="text-gray-500 text-xs mt-2">Where: <span className="text-cyan-300 font-semibold">{w.platform}</span></p>
+                <p className="text-gray-400 text-xs mt-2">Where: <span className="text-cyan-300 font-semibold">{w.platform}</span></p>
               </div>
             </div>
           ))}

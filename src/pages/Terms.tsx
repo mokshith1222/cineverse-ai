@@ -47,7 +47,7 @@ export default function Terms() {
                 "Not attempt to scrape, reverse engineer, or disrupt the platform.",
                 "Not use the Service to infringe intellectual property rights or violate applicable laws."
               ].map((item, i) => (
-                <li key={i} className="flex gap-3 items-start text-gray-500 text-sm">
+                <li key={i} className="flex gap-3 items-start text-gray-400 text-sm">
                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-500/50 mt-1.5 shrink-0" />
                   {item}
                 </li>
@@ -108,7 +108,7 @@ export default function Terms() {
           </section>
 
           <div className="bg-cyan-500/5 border border-cyan-400/10 rounded-2xl p-6 text-center">
-            <p className="text-gray-500 text-xs">
+            <p className="text-gray-400 text-xs">
               Questions about these Terms? Contact{' '}
               <a href="mailto:mokshithnaik932@gmail.com" className="text-cyan-400 hover:underline">
                 mokshithnaik932@gmail.com

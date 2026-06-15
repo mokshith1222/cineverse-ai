@@ -273,7 +273,7 @@ export default function AnimeDetail() {
                   {cardAnime.title}
                 </h1>
                 {detail.title_japanese && (
-                  <p className="text-gray-500 text-sm mt-2">{detail.title_japanese}</p>
+                  <p className="text-gray-400 text-sm mt-2">{detail.title_japanese}</p>
                 )}
               </div>
 
@@ -282,7 +282,7 @@ export default function AnimeDetail() {
                   <span className="inline-flex items-center gap-1.5 text-amber-400 font-semibold">
                     <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                     {cardAnime.rating}
-                    <span className="text-gray-500 font-normal">/10</span>
+                    <span className="text-gray-400 font-normal">/10</span>
                   </span>
                 )}
                 {typeof detail.scored_by === 'number' && detail.scored_by > 0 && (
@@ -292,7 +292,7 @@ export default function AnimeDetail() {
                   </span>
                 )}
                 {typeof detail.rank === 'number' && detail.rank > 0 && (
-                  <span className="text-gray-500">Rank #{detail.rank}</span>
+                  <span className="text-gray-400">Rank #{detail.rank}</span>
                 )}
                 <span className="inline-flex items-center gap-1.5 text-orange-300">
                   <Sparkles className="w-4 h-4" />
@@ -300,7 +300,7 @@ export default function AnimeDetail() {
                 </span>
               </div>
 
-              <div className="flex flex-wrap gap-3 text-xs text-gray-500">
+              <div className="flex flex-wrap gap-3 text-xs text-gray-400">
                 {detail.aired?.string && (
                   <span className="inline-flex items-center gap-1.5">
                     <Calendar className="w-3.5 h-3.5" />
@@ -334,18 +334,18 @@ export default function AnimeDetail() {
 
               <dl className="grid sm:grid-cols-2 gap-4 text-sm">
                 <div>
-                  <dt className="text-gray-500 mb-1">Episodes</dt>
+                  <dt className="text-gray-400 mb-1">Episodes</dt>
                   <dd className="text-white">{cardAnime.episodes > 0 ? cardAnime.episodes : 'TBA'}</dd>
                 </div>
                 {detail.studios && detail.studios.length > 0 && (
                   <div className="sm:col-span-2">
-                    <dt className="text-gray-500 mb-1">Studios</dt>
+                    <dt className="text-gray-400 mb-1">Studios</dt>
                     <dd className="text-white">{detail.studios.map(s => s.name).join(', ')}</dd>
                   </div>
                 )}
               </dl>
 
-              <p className="text-xs text-gray-600 font-mono">MAL ID: {detail.mal_id}</p>
+              <p className="text-xs text-gray-400 font-mono">MAL ID: {detail.mal_id}</p>
             </div>
           </div>
 
@@ -367,7 +367,7 @@ export default function AnimeDetail() {
                 />
               </div>
             ) : (
-              <div className="max-w-4xl rounded-xl border border-white/10 bg-gray-900/50 px-6 py-10 text-center text-gray-500 text-sm">
+              <div className="max-w-4xl rounded-xl border border-white/10 bg-gray-900/50 px-6 py-10 text-center text-gray-400 text-sm">
                 No trailer is linked on MyAnimeList for this title yet.
               </div>
             )}
@@ -377,7 +377,7 @@ export default function AnimeDetail() {
             <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
               <div>
                 <h2 className="text-xl font-black text-white tracking-tight">Recommendations</h2>
-                <p className="text-gray-500 text-sm mt-1">Powered by Jikan — cached to reduce API calls.</p>
+                <p className="text-gray-400 text-sm mt-1">Powered by Jikan — cached to reduce API calls.</p>
               </div>
               {recsLoading && (
                 <span className="inline-flex items-center gap-2 text-gray-400 text-xs">
@@ -401,7 +401,7 @@ export default function AnimeDetail() {
               </div>
             ) : (
               !recsError && (
-                <p className="text-gray-500 text-sm">No recommendations returned for this entry.</p>
+                <p className="text-gray-400 text-sm">No recommendations returned for this entry.</p>
               )
             )}
           </section>
