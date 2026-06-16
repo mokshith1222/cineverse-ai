@@ -121,7 +121,7 @@ const PAGES = [
   {
     route: '/',
     title: 'CineVerse AI - Your Entertainment Universe',
-    description: 'Discover movies, anime, TV shows, trailers, ratings and AI-powered entertainment recommendations on CineVerse AI. Your ultimate guide to global cinema and streaming.',
+    description: 'Discover movies, anime, TV shows, and AI-powered recommendations on CineVerse AI. Your ultimate guide to global streaming availability.',
     canonical: 'https://cineverse-ai-gules.vercel.app',
     body: `
       <section class="border-t border-white/5 bg-gray-950/80 mt-16 pt-16 pb-24">
@@ -200,7 +200,7 @@ const PAGES = [
   {
     route: '/about',
     title: 'About CineVerse AI | Editorial Entertainment Discovery',
-    description: 'Learn how CineVerse AI combines live entertainment data, curated editorial recommendations, and a premium browsing experience to help users discover what to watch next.',
+    description: 'Learn how CineVerse AI combines live entertainment data with curated recommendations to help you discover what to watch next.',
     canonical: 'https://cineverse-ai-gules.vercel.app/about',
     body: `
       <div class="bg-gray-950 min-h-screen pt-24 pb-16">
@@ -535,6 +535,18 @@ function prerenderPage(page) {
   } else {
     content = content.replace('</head>', `  ${newCanonical}\n  </head>`);
   }
+
+  // 3b. Replace Open Graph and Twitter URLs to match canonical link
+  content = content.replace(/<meta property="og:url" content="[^"]*"\s*\/?>/gi, `<meta property="og:url" content="${page.canonical}" />`);
+  content = content.replace(/<meta name="twitter:url" content="[^"]*"\s*\/?>/gi, `<meta name="twitter:url" content="${page.canonical}" />`);
+
+  // 3c. Replace Open Graph and Twitter Titles to match page title
+  content = content.replace(/<meta property="og:title" content="[^"]*"\s*\/?>/gi, `<meta property="og:title" content="${page.title}" />`);
+  content = content.replace(/<meta name="twitter:title" content="[^"]*"\s*\/?>/gi, `<meta name="twitter:title" content="${page.title}" />`);
+
+  // 3d. Replace Open Graph and Twitter Descriptions to match page description
+  content = content.replace(/<meta property="og:description" content="[^"]*"\s*\/?>/gi, `<meta property="og:description" content="${page.description}" />`);
+  content = content.replace(/<meta name="twitter:description" content="[^"]*"\s*\/?>/gi, `<meta name="twitter:description" content="${page.description}" />`);
 
   // 4. Inject Navbar, Content, and Footer into <div id="root"></div>
   const rootDiv = '<div id="root"></div>';
