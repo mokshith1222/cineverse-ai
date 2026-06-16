@@ -30,6 +30,7 @@ export default function Contact() {
           subtitle="Support, editorial, advertising, and copyright contact in one place"
           accent="cyan"
           icon={<Mail className="w-6 h-6" />}
+          as="h1"
         />
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">

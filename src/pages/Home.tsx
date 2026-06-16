@@ -609,7 +609,7 @@ export default function Home() {
     <div className="bg-gray-950 min-h-screen">
       <Seo
         title="CineVerse AI - Your Entertainment Universe"
-        description="Discover movies, anime, TV shows, trailers, ratings and AI-powered entertainment recommendations."
+        description="Discover movies, anime, TV shows, trailers, ratings and AI-powered entertainment recommendations on CineVerse AI. Your ultimate guide to global cinema and streaming."
         image={cms.seo.image}
         url="https://cineverse-ai-gules.vercel.app"
         schema={{
@@ -617,7 +617,7 @@ export default function Home() {
           '@type': 'WebSite',
           name: 'CineVerse AI',
           url: 'https://cineverse-ai-gules.vercel.app',
-          description: 'Discover movies, anime, TV shows, trailers, ratings and AI-powered entertainment recommendations.',
+          description: 'Discover movies, anime, TV shows, trailers, ratings and AI-powered entertainment recommendations on CineVerse AI. Your ultimate guide to global cinema and streaming.',
           potentialAction: {
             '@type': 'SearchAction',
             target: 'https://cineverse-ai-gules.vercel.app/search?q={search_term_string}',

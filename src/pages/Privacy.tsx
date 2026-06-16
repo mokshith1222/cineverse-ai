@@ -18,6 +18,7 @@ export default function Privacy() {
           subtitle={`Last updated: ${lastUpdated}`}
           accent="cyan"
           icon={<Shield className="w-6 h-6" />}
+          as="h1"
         />
 
         <div className="mt-12 bg-gray-900/40 rounded-3xl p-8 sm:p-12 border border-white/5 backdrop-blur-sm space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">

@@ -15,6 +15,7 @@ export default function About() {
           subtitle="A premium discovery platform that combines live entertainment data with original editorial value"
           accent="cyan"
           icon={<Info className="w-6 h-6" />}
+          as="h1"
         />
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">

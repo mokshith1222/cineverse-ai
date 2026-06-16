@@ -61,9 +61,9 @@ function AppShell() {
         <title>CineVerse AI - Your Entertainment Universe</title>
         <meta
           name="description"
-          content="Discover movies, anime, TV shows, trailers, ratings and AI-powered entertainment recommendations."
+          content="Discover movies, anime, TV shows, trailers, ratings and AI-powered entertainment recommendations on CineVerse AI. Your ultimate guide to global cinema and streaming."
         />
-        <meta name="keywords" content="movies, anime, OTT, AI entertainment, CineVerse AI" />
+        <meta name="keywords" content="movies, anime, OTT, AI entertainment, CineVerse AI, streaming tracker, editorial reviews" />
         <meta property="og:title" content="CineVerse AI" />
         <meta property="og:description" content="AI powered entertainment platform" />
       </Helmet>
