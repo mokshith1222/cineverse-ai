@@ -145,7 +145,7 @@ export async function detectAvailableRegion(): Promise<string> {
   if (detectedRegion) return detectedRegion;
   // To avoid hitting rate limits with multiple test requests, we default to a standard region.
   // The backend API should handle region failover or fallback, rather than the client polling all regions.
-  detectedRegion = 'US'; // Defaulting to US. You can also use 'IN' if that's your preferred region.
+  detectedRegion = 'IN'; // Defaulting to IN to prevent US plan limit errors.
   return detectedRegion;
 }
 
@@ -197,7 +197,7 @@ export async function fetchWatchmodeSources(imdbId: string): Promise<WatchmodeSo
   }
 }
 
-export async function fetchSourcesList(regions = 'US', types = 'sub'): Promise<WatchmodeSourceListItem[]> {
+export async function fetchSourcesList(regions = 'IN', types = 'sub'): Promise<WatchmodeSourceListItem[]> {
   const cacheKey = `${regions}::${types}`;
   if (sourcesListCache.has(cacheKey)) return sourcesListCache.get(cacheKey)!;
   try {
@@ -244,7 +244,7 @@ export async function listTitles(params: {
   });
 }
 
-export async function fetchTitleDetails(titleId: number, regions = 'US', includeSources = true): Promise<WatchmodeTitleDetails> {
+export async function fetchTitleDetails(titleId: number, regions = 'IN', includeSources = true): Promise<WatchmodeTitleDetails> {
   const cacheKey = `${titleId}::${regions}::${includeSources ? 'sources' : 'base'}`;
   if (titleDetailsCache.has(cacheKey)) return titleDetailsCache.get(cacheKey)!;
 
@@ -256,7 +256,7 @@ export async function fetchTitleDetails(titleId: number, regions = 'US', include
   return data;
 }
 
-export async function fetchTitleSources(titleId: number, regions = 'US'): Promise<WatchmodeSource[]> {
+export async function fetchTitleSources(titleId: number, regions = 'IN'): Promise<WatchmodeSource[]> {
   const cacheKey = `${titleId}::${regions}`;
   if (titleSourcesCache.has(cacheKey)) return titleSourcesCache.get(cacheKey)!;
   try {

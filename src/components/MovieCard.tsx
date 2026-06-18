@@ -8,9 +8,10 @@ import { getOptimizedImageUrl } from '../lib/imageOpt';
 interface Props {
   movie: Movie;
   featured?: boolean;
+  priority?: boolean;
 }
 
-export default function MovieCard({ movie, featured = false }: Props) {
+export default function MovieCard({ movie, featured = false, priority = false }: Props) {
   const [hovered, setHovered] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
   const [posterSrc, setPosterSrc] = useState(movie.poster || OMDB_FALLBACK_POSTER);
@@ -30,7 +31,8 @@ export default function MovieCard({ movie, featured = false }: Props) {
       <img
         src={getOptimizedImageUrl(posterSrc, 750)}
         alt={movie.title}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
         decoding="async"
         onError={() => {
           if (posterSrc !== OMDB_FALLBACK_POSTER) {

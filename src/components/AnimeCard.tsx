@@ -6,9 +6,10 @@ import { getOptimizedImageUrl } from '../lib/imageOpt';
 
 interface Props {
   anime: Anime;
+  priority?: boolean;
 }
 
-export default function AnimeCard({ anime }: Props) {
+export default function AnimeCard({ anime, priority }: Props) {
   const [hovered, setHovered] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
 
@@ -26,7 +27,8 @@ export default function AnimeCard({ anime }: Props) {
       <img
         src={getOptimizedImageUrl(anime.poster, 750)}
         alt={anime.title}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
         decoding="async"
         className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />

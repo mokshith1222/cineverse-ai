@@ -771,9 +771,9 @@ export default function Home() {
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-              {movies.slice(0, 2).map(movie => <MovieCard key={`pick-m-${movie.id}`} movie={movie} />)}
-              {popularAnime.slice(0, 2).map(item => <AnimeCard key={`pick-a-${item.id}`} anime={item} />)}
-              {tvTrendingShows.slice(0, 2).map(show => <TvCard key={`pick-t-${show.id}`} show={show} />)}
+              {movies.slice(0, 2).map((movie, idx) => <MovieCard key={`pick-m-${movie.id}`} movie={movie} priority={idx === 0} />)}
+              {popularAnime.slice(0, 2).map((item, idx) => <AnimeCard key={`pick-a-${item.id}`} anime={item} priority={idx === 0} />)}
+              {tvTrendingShows.slice(0, 2).map((show, idx) => <TvCard key={`pick-t-${show.id}`} show={show} priority={idx === 0} />)}
             </div>
           )}
         </section>

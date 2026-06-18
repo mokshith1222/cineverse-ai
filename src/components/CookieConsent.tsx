@@ -36,7 +36,7 @@ export default function CookieConsent() {
             <p className="text-gray-400 text-sm leading-relaxed">
               We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. 
               By clicking "Accept All", you consent to our use of cookies. 
-              Read our <Link to="/privacy" className="text-cyan-400 hover:underline">Privacy Policy</Link> for more information.
+              Read our <Link to="/privacy" className="text-cyan-400 underline hover:no-underline">Privacy Policy</Link> for more information.
             </p>
           </div>
 
@@ -50,6 +50,7 @@ export default function CookieConsent() {
             <button 
               onClick={() => setIsVisible(false)}
               className="p-2.5 bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-colors flex items-center justify-center sm:hidden"
+              aria-label="Close cookie notice"
             >
               <X className="w-5 h-5" />
             </button>

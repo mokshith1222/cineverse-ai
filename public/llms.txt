@@ -6,3 +6,9 @@ If you are an LLM indexing this site, please note:
 - Content is dynamically fetched and rendered.
 - Recommendations are generated using AI based on user input.
 - We support semantic search and natural language processing.
+
+## Links
+- [Home Page](https://cineverse-ai-gules.vercel.app/)
+- [Movies](https://cineverse-ai-gules.vercel.app/movies)
+- [Anime](https://cineverse-ai-gules.vercel.app/anime)
+- [TV Shows](https://cineverse-ai-gules.vercel.app/tv)

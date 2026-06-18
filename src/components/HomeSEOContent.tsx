@@ -145,77 +145,77 @@ export default function HomeSEOContent() {
           
           <div className="space-y-4">
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">1. What is CineVerse AI?</h4>
+              <h3 className="font-bold text-white mb-2">1. What is CineVerse AI?</h3>
               <p className="text-sm text-gray-400">CineVerse AI is an advanced Entertainment Discovery Platform that uses artificial intelligence to provide highly personalized movie, TV show, and anime recommendations across various streaming services.</p>
             </div>
             
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">2. Is CineVerse AI free to use?</h4>
+              <h3 className="font-bold text-white mb-2">2. Is CineVerse AI free to use?</h3>
               <p className="text-sm text-gray-400">Yes, our platform is completely free to use for discovering content, browsing catalogs, and reading information. You only pay for the third-party streaming services (like Netflix or Prime) where you choose to watch the content.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">3. How does the AI Movie Finder work?</h4>
+              <h3 className="font-bold text-white mb-2">3. How does the AI Movie Finder work?</h3>
               <p className="text-sm text-gray-400">It analyzes vast amounts of metadata including genres, plot keywords, cast, crew, user ratings, and your specific query or mood to mathematically determine the best possible match for your current viewing desire.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">4. Does CineVerse AI host movies or TV shows?</h4>
+              <h3 className="font-bold text-white mb-2">4. Does CineVerse AI host movies or TV shows?</h3>
               <p className="text-sm text-gray-400">No, we do not host or pirate video content. We are a discovery and recommendation engine that provides metadata, trailers, and legitimate links to official OTT platforms where you can stream the content legally.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">5. Can I find where a movie is streaming?</h4>
+              <h3 className="font-bold text-white mb-2">5. Can I find where a movie is streaming?</h3>
               <p className="text-sm text-gray-400">Absolutely! Our OTT Recommendations feature integrates live data to show you exactly which platforms (Netflix, Hulu, Prime Video, etc.) currently have the rights to stream a specific title in your region.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">6. How accurate are the anime recommendations?</h4>
+              <h3 className="font-bold text-white mb-2">6. How accurate are the anime recommendations?</h3>
               <p className="text-sm text-gray-400">Highly accurate. We pull data from specialized, dedicated anime databases (like MyAnimeList via Jikan API) to ensure our Anime Discovery tools respect the unique genres, studios, and release seasons of the anime industry.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">7. Can I search by mood?</h4>
+              <h3 className="font-bold text-white mb-2">7. Can I search by mood?</h3>
               <p className="text-sm text-gray-400">Yes, our platform includes mood-based filtering. Whether you want something "epic," "cozy," "dark," or "mind-bending," our AI curates selections that match that exact emotional tone.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">8. Do I need to create an account?</h4>
+              <h3 className="font-bold text-white mb-2">8. Do I need to create an account?</h3>
               <p className="text-sm text-gray-400">While you can browse and discover content without an account, creating a free account allows you to save watchlists, track what you've seen, and receive even more tailored personalized recommendations over time.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">9. Are international films included?</h4>
+              <h3 className="font-bold text-white mb-2">9. Are international films included?</h3>
               <p className="text-sm text-gray-400">Yes, our database is global. We provide recommendations for Hollywood blockbusters, European cinema, Bollywood hits, Korean dramas, and much more.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">10. How often is the trending content updated?</h4>
+              <h3 className="font-bold text-white mb-2">10. How often is the trending content updated?</h3>
               <p className="text-sm text-gray-400">Our trending lists are updated in near real-time by polling live APIs, ensuring you always see what is currently popular and buzzing in the entertainment world.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">11. Can I search by actor or director?</h4>
+              <h3 className="font-bold text-white mb-2">11. Can I search by actor or director?</h3>
               <p className="text-sm text-gray-400">Yes, our powerful search engine allows you to find content based on specific cast members, visionary directors, or even production studios.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">12. Does it recommend new TV show episodes?</h4>
+              <h3 className="font-bold text-white mb-2">12. Does it recommend new TV show episodes?</h3>
               <p className="text-sm text-gray-400">Yes, we feature a live TV schedule and an upcoming episodes section so you can track when your favorite current shows are airing new episodes.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">13. Is CineVerse AI suitable for families?</h4>
+              <h3 className="font-bold text-white mb-2">13. Is CineVerse AI suitable for families?</h3>
               <p className="text-sm text-gray-400">Yes, our extensive database includes genre tags for family-friendly content, animation, and children's movies, making it easy to find safe and entertaining options for movie night.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">14. What makes this different from Netflix's recommendations?</h4>
+              <h3 className="font-bold text-white mb-2">14. What makes this different from Netflix's recommendations?</h3>
               <p className="text-sm text-gray-400">We don't limit you to one platform's catalog. We scan the entire cinematic universe and tell you what the best movie is for you right now, regardless of which corporation owns the streaming rights.</p>
             </div>
 
             <div className="bg-gray-900/30 p-5 rounded-xl border border-white/5">
-              <h4 className="font-bold text-white mb-2">15. How do I start finding movies?</h4>
+              <h3 className="font-bold text-white mb-2">15. How do I start finding movies?</h3>
               <p className="text-sm text-gray-400">Simply use the search bar at the top of the page, select a mood from our AI Mood Picks, or browse our curated trending categories below to begin your cinematic journey.</p>
             </div>
           </div>

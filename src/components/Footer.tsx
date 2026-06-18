@@ -51,7 +51,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white text-sm font-semibold mb-3">Discover</h4>
+            <h2 className="text-white text-sm font-semibold mb-3">Discover</h2>
             <ul className="space-y-2">
               {[
                 { to: '/movies', label: 'Movies' },
@@ -71,7 +71,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white text-sm font-semibold mb-3">Company</h4>
+            <h2 className="text-white text-sm font-semibold mb-3">Company</h2>
             <ul className="space-y-2">
               {[
                 { to: '/about', label: 'About Us' },
@@ -87,7 +87,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white text-sm font-semibold mb-3">Legal</h4>
+            <h2 className="text-white text-sm font-semibold mb-3">Legal</h2>
             <ul className="space-y-2">
               {[
                 { to: '/privacy', label: 'Privacy Policy' },
@@ -112,9 +112,9 @@ export default function Footer() {
           <p className="text-gray-300 text-xs text-center sm:text-left">{footer.attribution}</p>
           <p className="text-gray-300 text-xs text-center sm:text-left">
             Cookie notice: CineVerse may use cookies for essential functionality, analytics, and (where enabled) advertising. Data is provided by third-party APIs and may be inaccurate. CineVerse does not host or stream media. See{' '}
-            <Link to="/privacy" className="text-cyan-400 hover:underline">Privacy</Link>
+            <Link to="/privacy" className="text-cyan-400 underline hover:no-underline">Privacy</Link>
             {' '}and{' '}
-            <Link to="/disclaimer" className="text-cyan-400 hover:underline">Disclaimer</Link>
+            <Link to="/disclaimer" className="text-cyan-400 underline hover:no-underline">Disclaimer</Link>
             .
           </p>
         </div>

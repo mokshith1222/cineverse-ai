@@ -26,6 +26,7 @@ const TipsModal: React.FC<TipsModalProps> = ({ isOpen, onClose }) => {
           <button 
             onClick={onClose}
             className="p-1 rounded-lg hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
+            aria-label="Close tips"
           >
             <X className="w-5 h-5" />
           </button>

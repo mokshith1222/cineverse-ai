@@ -6,9 +6,10 @@ import { getOptimizedImageUrl } from '../lib/imageOpt';
 
 interface Props {
   show: TvShow;
+  priority?: boolean;
 }
 
-export default function TvCard({ show }: Props) {
+export default function TvCard({ show, priority }: Props) {
   const [hovered, setHovered] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
 
@@ -29,7 +30,8 @@ export default function TvCard({ show }: Props) {
       <img
         src={getOptimizedImageUrl(show.poster, 750)}
         alt={show.title}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
         decoding="async"
         className="relative z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
