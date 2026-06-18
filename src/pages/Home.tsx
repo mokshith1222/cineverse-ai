@@ -392,7 +392,7 @@ function ShowcaseFallback() {
 export default function Home() {
   const [cms, setCms] = useState<CmsHomePayload>(fallbackCmsHome);
   const [mood, setMood] = useState<DiscoveryMood>('epic');
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Movie[]>(fallbackMovies);
   const [moviesLoading, setMoviesLoading] = useState(true);
   const [moviesErr, setMoviesErr] = useState<string | null>(null);
 
