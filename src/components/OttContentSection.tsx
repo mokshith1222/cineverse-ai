@@ -75,7 +75,7 @@ export default function OttContentSection({
         </div>
       ) : titles.length > 0 ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-          {titles.slice(0, 6).map(title => {
+          {titles.slice(0, 6).map((title, i) => {
             const badges = providerBadges(title, region, sourcesById);
             const href = title.type === 'movie' && title.imdb_id ? `/movies/${title.imdb_id}` : '/ott';
             const rating = title.user_rating ? Number(title.user_rating.toFixed(1)) : null;
@@ -85,7 +85,7 @@ export default function OttContentSection({
                 to={href}
                 className="relative group aspect-[2/3] rounded-xl overflow-hidden bg-gray-900 border border-white/5 transition-all duration-300 hover:scale-105 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-blue-500/10"
               >
-                <img src={getOptimizedImageUrl(titlePoster(title), 750)} alt={title.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <img src={getOptimizedImageUrl(titlePoster(title), 750)} alt={title.title} loading={i < 4 ? "eager" : "lazy"} fetchPriority={i < 4 ? "high" : "auto"} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/45 to-transparent opacity-90" />
                 <div className="absolute top-2 left-2 right-2 flex flex-wrap gap-1">
                   {badges.map(source => (

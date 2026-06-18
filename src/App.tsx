@@ -69,7 +69,7 @@ function AppShell() {
       </Helmet>
       <AmbientBackdrop />
       {!isAuthPage && <Navbar />}
-      <main className={`relative z-10 flex-1 ${isAuthPage ? '' : 'pt-16 md:pt-20'}`}>
+      <main className={`relative z-10 flex-1 flex flex-col min-h-screen ${isAuthPage ? '' : 'pt-16 md:pt-20'}`}>
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={location.pathname}

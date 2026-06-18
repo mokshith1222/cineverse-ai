@@ -41,8 +41,8 @@ export default function TrendingMoviesShowcase({
         </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
-          {movies.slice(0, 6).map(movie => (
-            <MovieCard key={String(movie.id)} movie={movie} />
+          {movies.slice(0, 12).map((movie, i) => (
+            <MovieCard key={String(movie.id)} movie={movie} priority={i < 6} />
           ))}
         </div>
       )}
