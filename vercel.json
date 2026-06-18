@@ -17,7 +17,9 @@
       "m.media-amazon.com",
       "cdn.myanimelist.net",
       "static.tvmaze.com",
-      "placehold.co"
+      "placehold.co",
+      "image.tmdb.org",
+      "cdn.watchmode.com"
     ]
   }
 }

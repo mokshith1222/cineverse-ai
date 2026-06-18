@@ -56,7 +56,7 @@ function AppShell() {
   }, [location.pathname]);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-gray-950 text-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-gray-950 text-white flex flex-col">
       <Helmet>
         <title>CineVerse AI - Your Entertainment Universe</title>
         <meta
@@ -69,7 +69,7 @@ function AppShell() {
       </Helmet>
       <AmbientBackdrop />
       {!isAuthPage && <Navbar />}
-      <main className={`relative z-10 ${isAuthPage ? '' : 'pt-16 md:pt-20'}`}>
+      <main className={`relative z-10 flex-1 ${isAuthPage ? '' : 'pt-16 md:pt-20'}`}>
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={location.pathname}

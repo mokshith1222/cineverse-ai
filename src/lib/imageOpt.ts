@@ -7,7 +7,7 @@ export function getOptimizedImageUrl(url: string, width: number = 750) {
   // Vercel's Edge API handles external absolute URLs fine! Actually wait, local Vite dev server
   // doesn't have /_vercel route. So we MUST check PROD.
   if (import.meta.env.PROD) {
-    return `/_vercel/image?url=${encodeURIComponent(url)}&w=${width}&q=75`;
+    return `/_vercel/image?url=${encodeURIComponent(url)}&w=${width}&q=60`;
   }
   
   return url;
