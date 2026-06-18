@@ -65,6 +65,7 @@ import {
   youtubeThumbnailUrl,
 } from '../lib/youtube';
 import { trendingMovies as fallbackMovies } from '../data/movies';
+import { trendingAnime as fallbackAnime } from '../data/anime';
 import { featuredTrailers } from '../data/trailers';
 import { buildSearchUrl } from '../lib/smartSearch';
 import AdSlot from '../components/ads/AdSlot';
@@ -448,8 +449,9 @@ export default function Home() {
       const res = await fetchTopAnimePopular(12);
       setPopularAnime(res.data.map(mapJikanAnime));
     } catch (err) {
-      setPopularAnime([]);
-      setAnimeErr(err instanceof JikanApiError ? err.message : 'Popular anime could not be loaded.');
+      console.warn('[Home] Jikan anime load failed, using fallback', err);
+      setPopularAnime(fallbackAnime);
+      setAnimeErr('Live anime details are currently unavailable (504). Showing curated picks instead.');
     } finally {
       setAnimeLoading(false);
     }
