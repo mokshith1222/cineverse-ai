@@ -506,7 +506,15 @@ export default function Home() {
 
       setOttSources(sources);
       const ids = (list.titles || []).map(t => t.id).slice(0, 12);
-      const details = await Promise.allSettled(ids.map(id => fetchTitleDetails(id, region, true)));
+      const details: PromiseSettledResult<WatchmodeTitleDetails>[] = [];
+      for (let i = 0; i < ids.length; i += 3) {
+        const chunk = ids.slice(i, i + 3);
+        const results = await Promise.allSettled(chunk.map(id => fetchTitleDetails(id, region, true)));
+        details.push(...results);
+        if (i + 3 < ids.length) {
+          await new Promise(r => setTimeout(r, 250));
+        }
+      }
       const rows = details
         .filter((r): r is PromiseFulfilledResult<WatchmodeTitleDetails> => r.status === 'fulfilled')
         .map(r => r.value);
